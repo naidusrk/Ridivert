@@ -1,0 +1,13 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "cycle.png",
+      "scale" : "1x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
