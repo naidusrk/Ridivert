@@ -38,6 +38,9 @@
 		CF29AFAB210CE9ED00716721 /* cycle.png in Resources */ = {isa = PBXBuildFile; fileRef = CF29AFAA210CE9ED00716721 /* cycle.png */; };
 		CF29AFAF210EE21000716721 /* RDSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF29AFAD210EE21000716721 /* RDSignInViewController.swift */; };
 		CF29AFB0210EE21000716721 /* RDAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF29AFAE210EE21000716721 /* RDAlertViewController.swift */; };
+		CF480C2621203F7B002FE807 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF480C2521203F7B002FE807 /* CoreLocation.framework */; };
+		CF480C2821203F7F002FE807 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF480C2721203F7F002FE807 /* MapKit.framework */; };
+		CF480C2B2120AD49002FE807 /* America.gpx in Resources */ = {isa = PBXBuildFile; fileRef = CF480C2A2120AD49002FE807 /* America.gpx */; };
 		CF7D4294211CC25D00362191 /* CustomFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF7D4292211CC25D00362191 /* CustomFooter.xib */; };
 		CF7D4295211CC25D00362191 /* CustomFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7D4293211CC25D00362191 /* CustomFooter.swift */; };
 		CF91CC742106544900373FB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF91CC732106544900373FB6 /* AppDelegate.swift */; };
@@ -87,6 +90,9 @@
 		CF29AFAA210CE9ED00716721 /* cycle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cycle.png; sourceTree = "<group>"; };
 		CF29AFAD210EE21000716721 /* RDSignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDSignInViewController.swift; sourceTree = "<group>"; };
 		CF29AFAE210EE21000716721 /* RDAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDAlertViewController.swift; sourceTree = "<group>"; };
+		CF480C2521203F7B002FE807 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CF480C2721203F7F002FE807 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CF480C2A2120AD49002FE807 /* America.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = America.gpx; path = ../../Downloads/America.gpx; sourceTree = "<group>"; };
 		CF7D4292211CC25D00362191 /* CustomFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomFooter.xib; sourceTree = "<group>"; };
 		CF7D4293211CC25D00362191 /* CustomFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFooter.swift; sourceTree = "<group>"; };
 		CF91CC702106544900373FB6 /* Ridevert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ridevert.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +110,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF480C2821203F7F002FE807 /* MapKit.framework in Frameworks */,
+				CF480C2621203F7B002FE807 /* CoreLocation.framework in Frameworks */,
 				DD9A85BAF190074A1417BE50 /* Pods_Ridevert.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,6 +131,8 @@
 		CB5CF65D424BC39D9BFF59A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF480C2721203F7F002FE807 /* MapKit.framework */,
+				CF480C2521203F7B002FE807 /* CoreLocation.framework */,
 				1F55ACA87BB98FFFA25BFD36 /* Pods_Ridevert.framework */,
 			);
 			name = Frameworks;
@@ -210,6 +220,7 @@
 		CF91CC672106544900373FB6 = {
 			isa = PBXGroup;
 			children = (
+				CF480C2A2120AD49002FE807 /* America.gpx */,
 				CF29AF95210905DF00716721 /* SlidingMenu */,
 				CF29AF8E2109031E00716721 /* Tableviewcell */,
 				CF29AF78210902D600716721 /* Extension */,
@@ -288,6 +299,11 @@
 					CF91CC6F2106544900373FB6 = {
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 0940;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -316,6 +332,7 @@
 			files = (
 				CF29AFAB210CE9ED00716721 /* cycle.png in Resources */,
 				CF29AF942109034600716721 /* DataTableViewCell.xib in Resources */,
+				CF480C2B2120AD49002FE807 /* America.gpx in Resources */,
 				CF91CC812106545000373FB6 /* LaunchScreen.storyboard in Resources */,
 				CF91CC7E2106545000373FB6 /* Assets.xcassets in Resources */,
 				CF7D4294211CC25D00362191 /* CustomFooter.xib in Resources */,

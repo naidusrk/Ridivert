@@ -17,25 +17,27 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     @IBOutlet weak var riderMapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+      
         self.setNavigationBarItem()
+        
         
         riderMapView.delegate = self
         
         locationManager = CLLocationManager()
-        locationManager.delegate = self as? CLLocationManagerDelegate
+        locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         // Check for Location Services
         
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
-        }
+        
         riderMapView.mapType = .standard
         riderMapView.isZoomEnabled = true
         riderMapView.isScrollEnabled = true
         riderMapView.showsUserLocation  = true
         
+        self.locationManager.requestWhenInUseAuthorization()
+
         if let coor = riderMapView.userLocation.location?.coordinate{
             
             
@@ -47,6 +49,9 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
 
         }
 
+      
+        // setupData()
+        
         getLatLongFromZipCode()
         
         
@@ -55,12 +60,39 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     }
     
     
-    
+    func setupData() {
+        // 1. check if system can monitor regions
+        if CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
+            
+            // 2. region data
+            let title = "Lorrenzillo's"
+            let coordinate = CLLocationCoordinate2DMake(50.259290, 19.015630)
+            let regionRadius = 300.0
+            
+            // 3. setup region
+            let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinate.latitude,
+                                                                         longitude: coordinate.longitude), radius: regionRadius, identifier: title)
+            locationManager.startMonitoring(for: region)
+            
+            // 4. setup annotation
+            let restaurantAnnotation = MKPointAnnotation()
+            restaurantAnnotation.coordinate = coordinate;
+            restaurantAnnotation.title = "\(title)";
+            riderMapView.addAnnotation(restaurantAnnotation)
+            
+            // 5. setup circle
+            let circle = MKCircle.init(center: coordinate, radius: regionRadius)
+            riderMapView.add(circle)
+        }
+        else {
+            print("System can't track regions")
+        }
+    }
     
     
     func getLatLongFromZipCode()
     {
-        let address = "500072"
+        let address = "534201"
         let geocoder = CLGeocoder()
         
         geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
@@ -73,18 +105,24 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                 
                 if let pmCircularRegion = placemark.region as? CLCircularRegion {
                     
-                    let maxDistance = self.locationManager.maximumRegionMonitoringDistance
+                    //let maxDistance = self.locationManager.maximumRegionMonitoringDistance
                     
                     //let metersAcross = pmCircularRegion.radius * 2
                     
-                    //let metersAcross = 50
+                    let metersAcross = 2000
 
-                    print("maxDistance is \(maxDistance)")
+                    print("metersAcross is \(metersAcross)")
                     if CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
                         
                         self.riderMapView.delegate = self
                         let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinates.latitude,
-                                                                                     longitude: coordinates.longitude), radius: maxDistance, identifier: "pin")
+                                                                                     longitude: coordinates.longitude), radius: CLLocationDistance(metersAcross), identifier: "pin")
+
+
+                        
+//                        let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude:17.5026982,
+//                                                                                     longitude:78.3938408), radius: CLLocationDistance(metersAcross), identifier: "pin")
+//
                         
                         region.notifyOnExit = true
                         region.notifyOnEntry = true
@@ -99,8 +137,13 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                         //draw a circle
                         
                         let location = CLLocation(latitude: coordinates.latitude as CLLocationDegrees, longitude: coordinates.longitude as CLLocationDegrees)
-                        let circle = MKCircle.init(center: location.coordinate, radius: maxDistance)
+                        let circle = MKCircle.init(center: location.coordinate, radius: CLLocationDistance(metersAcross))
                         self.riderMapView.add(circle)
+                        
+                        if CLLocationManager.locationServicesEnabled() {
+                            self.locationManager.requestAlwaysAuthorization()
+                            self.locationManager.startUpdatingLocation()
+                        }
                         
                     }
                     else {
@@ -178,7 +221,7 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         if overlay is MKCircle {
             let circle = MKCircleRenderer(overlay: overlay)
             circle.strokeColor = UIColor.red
-            circle.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.1)
+            //circle.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.1)
             circle.lineWidth = 1
             return circle
         } else {
@@ -189,9 +232,33 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     
     
     
+    func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
+        
+        print("----->entered regions")
+
+
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+        print("Started Monitoring Region: \(region.identifier)")
+        
+        getLatLongFromZipCode()
+
+
+
+    }
+    
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         
-        showAlert()
+        
+        print("----->entered regions")
+        
+        DispatchQueue.main.async {
+            self.showAlert()
+            
+        }
+
+        
         
         if region is CLCircularRegion {
             // Do what you want if this information
@@ -203,45 +270,53 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     // 2. user exit region
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         
+        DispatchQueue.main.async {
+            self.showAlert()
+            
+        }
+
         if region is CLCircularRegion {
             // Do what you want if this information
             self.handleEvent(forRegion: region)
         }
         
-        showAlert()
+        print("----->exited regions")
+
 
     }
     
     func showAlert()
     {
         
-        let alertController = UIAlertController(title: "Hello  Coders", message: "Visit www.simplifiedios.net to learn xcode", preferredStyle: .alert)
+        var topWindow: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
+        topWindow?.rootViewController = UIViewController()
+        topWindow?.windowLevel = UIWindowLevelAlert + 1
+        let alert: UIAlertController =  UIAlertController(title: "APNS", message: "received Notification", preferredStyle: .alert)
+        alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (alertAction) in
+            topWindow?.isHidden = true
+            topWindow = nil
+        }))
         
-        //then we create a default action for the alert...
-        //It is actually a button and we have given the button text style and handler
-        //currently handler is nil as we are not specifying any handler
-        let defaultAction = UIAlertAction(title: "Close Alert", style: .default, handler: nil)
-        
-        //now we are adding the default action to our alertcontroller
-        alertController.addAction(defaultAction)
-        
-        //and finally presenting our alert using this method
-        present(alertController, animated: true, completion: nil)
-        
+        topWindow?.makeKeyAndVisible()
+        topWindow?.rootViewController?.present(alert, animated: true, completion:nil)
         
     }
 
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
+       // manager.stopUpdatingLocation()
 
         
-       let userLocation:CLLocation = locations[0] as CLLocation
-         // manager.stopUpdatingLocation()
+//       let userLocation:CLLocation = locations[0] as CLLocation
+//         // manager.stopUpdatingLocation()
 //
 //        let location = locations[0] as CLLocation
 //        let geoCoder = CLGeocoder()
 //        geoCoder.reverseGeocodeLocation(location, completionHandler: { (data, error) -> Void in
+//
+//            if((data?.count)!>0)
+//            {
 //            let placeMarks = data as! [CLPlacemark]
 //            let loc: CLPlacemark = placeMarks[0]
 //
@@ -250,6 +325,8 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
 //            let reg = MKCoordinateRegionMakeWithDistance(location.coordinate, 1500, 1500)
 //            self.riderMapView.setRegion(reg, animated: true)
 //            self.riderMapView.showsUserLocation = true
+//
+//            }
 //
 //        })
         
