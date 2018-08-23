@@ -59,6 +59,8 @@
 	<string>This application requires location services to calculate the ride</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This application requires location services to calculate the ride</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This application requires location services to calculate the ride</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

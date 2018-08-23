@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF00333E212DEFA600D6887B /* Mapping.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF00333C212DEFA600D6887B /* Mapping.xcdatamodeld */; };
+		CF1921BF21248E090006A67B /* America.gpx in Resources */ = {isa = PBXBuildFile; fileRef = CF1921BE21248E080006A67B /* America.gpx */; };
 		CF29AF6321078E2900716721 /* RDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF29AF6221078E2900716721 /* RDConstants.swift */; };
 		CF29AF6521078E8400716721 /* RDNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF29AF6421078E8400716721 /* RDNetworkManager.swift */; };
 		CF29AF6821078F9800716721 /* RDTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF29AF6721078F9800716721 /* RDTextFieldValidation.swift */; };
@@ -40,7 +42,6 @@
 		CF29AFB0210EE21000716721 /* RDAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF29AFAE210EE21000716721 /* RDAlertViewController.swift */; };
 		CF480C2621203F7B002FE807 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF480C2521203F7B002FE807 /* CoreLocation.framework */; };
 		CF480C2821203F7F002FE807 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF480C2721203F7F002FE807 /* MapKit.framework */; };
-		CF480C2B2120AD49002FE807 /* America.gpx in Resources */ = {isa = PBXBuildFile; fileRef = CF480C2A2120AD49002FE807 /* America.gpx */; };
 		CF7D4294211CC25D00362191 /* CustomFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF7D4292211CC25D00362191 /* CustomFooter.xib */; };
 		CF7D4295211CC25D00362191 /* CustomFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7D4293211CC25D00362191 /* CustomFooter.swift */; };
 		CF91CC742106544900373FB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF91CC732106544900373FB6 /* AppDelegate.swift */; };
@@ -49,6 +50,7 @@
 		CF91CC7C2106544900373FB6 /* Ridevert.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF91CC7A2106544900373FB6 /* Ridevert.xcdatamodeld */; };
 		CF91CC7E2106545000373FB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF91CC7D2106545000373FB6 /* Assets.xcassets */; };
 		CF91CC812106545000373FB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF91CC7F2106545000373FB6 /* LaunchScreen.storyboard */; };
+		CFBF773D212B453F0062FDBD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF773C212B453F0062FDBD /* CoreDataManager.swift */; };
 		DD9A85BAF190074A1417BE50 /* Pods_Ridevert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55ACA87BB98FFFA25BFD36 /* Pods_Ridevert.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +58,8 @@
 		1F55ACA87BB98FFFA25BFD36 /* Pods_Ridevert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ridevert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		230B3D3A98E182CF93657CE1 /* Pods-Ridevert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ridevert.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ridevert/Pods-Ridevert.release.xcconfig"; sourceTree = "<group>"; };
 		91D56C2B7769CB92E26FD3E8 /* Pods-Ridevert.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ridevert.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ridevert/Pods-Ridevert.debug.xcconfig"; sourceTree = "<group>"; };
+		CF00333D212DEFA600D6887B /* Map.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Map.xcdatamodel; sourceTree = "<group>"; };
+		CF1921BE21248E080006A67B /* America.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = America.gpx; sourceTree = "<group>"; };
 		CF29AF6221078E2900716721 /* RDConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDConstants.swift; sourceTree = "<group>"; };
 		CF29AF6421078E8400716721 /* RDNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDNetworkManager.swift; sourceTree = "<group>"; };
 		CF29AF6721078F9800716721 /* RDTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDTextFieldValidation.swift; sourceTree = "<group>"; };
@@ -92,7 +96,6 @@
 		CF29AFAE210EE21000716721 /* RDAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDAlertViewController.swift; sourceTree = "<group>"; };
 		CF480C2521203F7B002FE807 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CF480C2721203F7F002FE807 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		CF480C2A2120AD49002FE807 /* America.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = America.gpx; path = ../../Downloads/America.gpx; sourceTree = "<group>"; };
 		CF7D4292211CC25D00362191 /* CustomFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomFooter.xib; sourceTree = "<group>"; };
 		CF7D4293211CC25D00362191 /* CustomFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFooter.swift; sourceTree = "<group>"; };
 		CF91CC702106544900373FB6 /* Ridevert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ridevert.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +106,7 @@
 		CF91CC7D2106545000373FB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF91CC802106545000373FB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF91CC822106545000373FB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFBF773C212B453F0062FDBD /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,7 +224,9 @@
 		CF91CC672106544900373FB6 = {
 			isa = PBXGroup;
 			children = (
-				CF480C2A2120AD49002FE807 /* America.gpx */,
+				CF00333C212DEFA600D6887B /* Mapping.xcdatamodeld */,
+				CFBF773C212B453F0062FDBD /* CoreDataManager.swift */,
+				CF1921BE21248E080006A67B /* America.gpx */,
 				CF29AF95210905DF00716721 /* SlidingMenu */,
 				CF29AF8E2109031E00716721 /* Tableviewcell */,
 				CF29AF78210902D600716721 /* Extension */,
@@ -332,10 +338,10 @@
 			files = (
 				CF29AFAB210CE9ED00716721 /* cycle.png in Resources */,
 				CF29AF942109034600716721 /* DataTableViewCell.xib in Resources */,
-				CF480C2B2120AD49002FE807 /* America.gpx in Resources */,
 				CF91CC812106545000373FB6 /* LaunchScreen.storyboard in Resources */,
 				CF91CC7E2106545000373FB6 /* Assets.xcassets in Resources */,
 				CF7D4294211CC25D00362191 /* CustomFooter.xib in Resources */,
+				CF1921BF21248E090006A67B /* America.gpx in Resources */,
 				CF91CC792106544900373FB6 /* Main.storyboard in Resources */,
 				CF29AF87210902EC00716721 /* ImageHeaderView.xib in Resources */,
 			);
@@ -439,6 +445,7 @@
 				CF29AF8D210902EC00716721 /* UIApplication.swift in Sources */,
 				CF29AF6821078F9800716721 /* RDTextFieldValidation.swift in Sources */,
 				CF29AF8C210902EC00716721 /* ImageHeaderView.swift in Sources */,
+				CF00333E212DEFA600D6887B /* Mapping.xcdatamodeld in Sources */,
 				CF29AFA42109130D00716721 /* SettingsViewController.swift in Sources */,
 				CF29AF9A2109128D00716721 /* CampaignViewController.swift in Sources */,
 				CF29AF76210901B700716721 /* LeftViewController.swift in Sources */,
@@ -456,6 +463,7 @@
 				CF29AF922109034600716721 /* BaseTableViewCell.swift in Sources */,
 				CF29AF972109075D00716721 /* ExSlideMenuController.swift in Sources */,
 				CF29AF932109034600716721 /* DataTableViewCell.swift in Sources */,
+				CFBF773D212B453F0062FDBD /* CoreDataManager.swift in Sources */,
 				CF29AF8A210902EC00716721 /* UIViewController.swift in Sources */,
 				CF91CC742106544900373FB6 /* AppDelegate.swift in Sources */,
 				CF7D4295211CC25D00362191 /* CustomFooter.swift in Sources */,
@@ -678,6 +686,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		CF00333C212DEFA600D6887B /* Mapping.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CF00333D212DEFA600D6887B /* Map.xcdatamodel */,
+			);
+			currentVersion = CF00333D212DEFA600D6887B /* Map.xcdatamodel */;
+			path = Mapping.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		CF91CC7A2106544900373FB6 /* Ridevert.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

@@ -78,11 +78,9 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         switch menu {
         case .campaigns:
             self.slideMenuController()?.changeMainViewController(self.campgainViewController, close: true)
+            
         case .ride:
-            
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let swiftViewController = storyboard.instantiateViewController(withIdentifier: "RideViewController") as! RideViewController
+             let storyboard = UIStoryboard(name: "Main", bundle: nil)
              let rideViewControllerRoot = storyboard.instantiateViewController(withIdentifier: "RideViewController") as! RideViewController
             self.rideViewController = UINavigationController(rootViewController: rideViewControllerRoot)
             self.slideMenuController()?.changeMainViewController(self.rideViewController, close: true)

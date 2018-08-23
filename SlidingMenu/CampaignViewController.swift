@@ -11,9 +11,10 @@ import MBProgressHUD
 
 class CampaignViewController: UIViewController {
 
-   
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet  var tableView: UITableView!
     var dataArray  = NSMutableArray()
+    var selectedCampaign = NSDictionary ()
     
     var mainContens = ["data1", "data2", "data3", "data4", "data5", "data6", "data7", "data8", "data9", "data10", "data11", "data12", "data13", "data14", "data15"]
     
@@ -137,6 +138,11 @@ class CampaignViewController: UIViewController {
     }
     
     
+  
+    
+    
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -155,6 +161,8 @@ class CampaignViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
 }
 
@@ -164,9 +172,39 @@ extension CampaignViewController : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        
+        
+        
         //        let storyboard = UIStoryboard(name: "SubContentsViewController", bundle: nil)
         //        let subContentsVC = storyboard.instantiateViewController(withIdentifier: "SubContentsViewController") as! SubContentsViewController
         //        self.navigationController?.pushViewController(subContentsVC, animated: true)
+    }
+    
+    func showAlert(string:String)
+    {
+        let aStr = String(format: "%@%@", string, "Campaign Selected")
+        let alertController = UIAlertController(title: "Ridivert", message: aStr, preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "Select", style: .default) { (action:UIAlertAction) in
+            self.showRideView()
+        }
+        
+        let action2 = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction) in
+            print("You've pressed cancel");
+        }
+        alertController.addAction(action1)
+        alertController.addAction(action2)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    func showRideView()
+    {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let rideViewControllerRoot:RideViewController = storyboard.instantiateViewController(withIdentifier: "RideViewController") as! RideViewController
+        rideViewControllerRoot.selectedDataDic = selectedCampaign
+        let rideViewController = UINavigationController(rootViewController: rideViewControllerRoot)
+        self.slideMenuController()?.changeMainViewController(rideViewController, close: true)
     }
 }
 
@@ -183,29 +221,42 @@ extension CampaignViewController : UITableViewDataSource {
         cell.titleLable?.text = dataDic["name"] as? String
         cell.descriptionLabel?.text = dataDic["description"] as? String
         let priceStr = String(format: "%@%@", "$",(dataDic["limit"] as? String)!)
-
+        cell.selectCampaignBtn.addTarget(self, action: #selector(selectedCampaign(sender:)), for: .touchUpInside)
+        cell.selectCampaignBtn.tag = indexPath.row
         cell.priceLabel?.text = priceStr
-    
         cell.selectCampaignBtn.layer.borderWidth = 1
         cell.selectCampaignBtn.layer.cornerRadius = 12
         cell.selectCampaignBtn.layer.opacity = 1
+        
         
        // let data = DataTableViewCellData(imageUrl: "dummy", text: mainContens[indexPath.row])
         //cell.setData(data)
         return cell
     }
     
-    
+    @objc func selectedCampaign(sender: UIButton){
+
+        
+        selectedCampaign = dataArray[sender.tag] as! NSDictionary
+        
+        showAlert(string:(selectedCampaign["name"] as? String)!)
+        
+       
+    }
+
 }
 
 extension CampaignViewController : SlideMenuControllerDelegate {
     
     func leftWillOpen() {
+        
         print("SlideMenuControllerDelegate: leftWillOpen")
     }
     
     func leftDidOpen() {
         print("SlideMenuControllerDelegate: leftDidOpen")
+        
+       
     }
     
     func leftWillClose() {
