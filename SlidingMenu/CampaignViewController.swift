@@ -20,6 +20,7 @@ class CampaignViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         MBProgressHUD.showAdded(to: self.view, animated: true)
 
@@ -46,8 +47,10 @@ class CampaignViewController: UIViewController {
               //  let dic = json as! [String:Any]
                 for item in json
                 {
-                    let objectData = json[item.key] as? Dictionary<String, Any>
+                    var objectData:Dictionary = (json[item.key] as? Dictionary<String, Any>)!
                     
+                    
+                    objectData["campaignId"] = item.key
                     self.dataArray.add(objectData)
 
                    
@@ -203,6 +206,8 @@ extension CampaignViewController : UITableViewDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let rideViewControllerRoot:RideViewController = storyboard.instantiateViewController(withIdentifier: "RideViewController") as! RideViewController
         rideViewControllerRoot.selectedDataDic = selectedCampaign
+
+        
         let rideViewController = UINavigationController(rootViewController: rideViewControllerRoot)
         self.slideMenuController()?.changeMainViewController(rideViewController, close: true)
     }

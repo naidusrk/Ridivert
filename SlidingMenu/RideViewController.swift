@@ -24,21 +24,27 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     var totalDistance:Double = 0
     var toggleState = 1
     var pauseCount:Int = 0
+    var selectedCircularRegion = CLRegion()
+    
 
     var messageSubtitle = "Staff Meeting in 20 minutes"
     var isInsideRegion:Bool = false
     var isOutsideRegion:Bool = false
+    var isRegionMonitoringStarted:Bool = false
 
     var dollarPrice :Float = 0.0
     var regionBackGroundColor = UIColor()
 
     
     var selectedDataDic = NSDictionary()
+    var selectedCampaignId:String = ""
      var locationManager: CLLocationManager!
     private var currentLocation: CLLocation?
     @IBOutlet weak var riderMapView: MKMapView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var milesLabel: UILabel!
+    @IBOutlet weak var circularPriceLabel: UILabel!
+
     @IBOutlet weak var rideButton: UIButton!
     @IBOutlet weak var campaignPriceLabel: UILabel!
     @IBOutlet weak var pauseButton: UIButton!
@@ -56,7 +62,10 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         super.viewDidLoad()
         
         
-        
+        self.slideMenuController()?.delegate = self as SlideMenuControllerDelegate
+
+        stopMonitoringRegions()
+
         campaignPriceLabel.text = ""
         campaignPriceLabel.isHidden = true
         UNUserNotificationCenter.current().requestAuthorization(options:
@@ -65,7 +74,7 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                                                                     // Handle Error
         })
     
-         addMilesView()
+        addMilesView()
         self.setNavigationBarItem()
         riderMapView.delegate = self
         locationManager = CLLocationManager()
@@ -92,6 +101,14 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
 //            riderMapView.userLocation = customLocation
 
         }
+
+        
+        if let userLocation = self.locationManager.location?.coordinate {
+            let viewRegion = MKCoordinateRegionMakeWithDistance(userLocation, 200, 200)
+            riderMapView.setRegion(viewRegion, animated: false)
+        }
+        
+        
 
       
         // setupData()
@@ -128,8 +145,12 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     
     @IBAction func rideButtonClicked(_ sender: Any) {
         
+        if(selectedDataDic.count > 0)
+        {
         getLatLongFromZipCode(pincode: selectedDataDic["zipcode"] as! String)
         milesView.isHidden  = true
+            
+        }
     }
     
     
@@ -154,13 +175,13 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
 
         if(isInsideRegion)
         {
-            campaignPriceLabel.isHidden = false
-
-        let distance:String = String(format:"%f", miles)
-        campaignPriceLabel.backgroundColor = UIColor.green
-        campaignPriceLabel.text =   String(format:"$ %.2f", distance)
-        regionBackGroundColor = UIColor.green
-            boundaryMilesLabel.text = String(format:"%.2f miles", totalDistance)
+    
+           campaignPriceLabel.isHidden = false
+           let distance:String = String(format:"%.3f", miles)
+           campaignPriceLabel.backgroundColor = UIColor.green
+           campaignPriceLabel.text =   String(format:"$ %.3f", distance)
+           regionBackGroundColor = UIColor.green
+           boundaryMilesLabel.text = String(format:"%.3f miles", totalDistance)
 
         }
             
@@ -172,9 +193,9 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
 
             regionBackGroundColor = UIColor.red
             campaignPriceLabel.backgroundColor = UIColor.red
-            let distance:String = String(format:"$ %.2f", miles)
+            let distance:String = String(format:"$ %.3f", miles)
             campaignPriceLabel.text = distance
-            boundaryMilesLabel.text = String(format:"%.2f miles", totalDistance)
+            boundaryMilesLabel.text = String(format:"%.3f miles", totalDistance)
 
             
         }
@@ -191,27 +212,60 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         if toggleState == 1 {
             toggleState = 2
             pauseCount += 1
-            playBtn.setTitle("Play",for: .normal)
+            playBtn.setTitle("Resume",for: .normal)
+            locationManager.stopMonitoring(for: selectedCircularRegion)
+            locationManager.stopUpdatingLocation()
         } else {
             toggleState = 1
             playBtn.setTitle("Pause",for: .normal)
+            
+            locationManager.startUpdatingLocation()
+
+            locationManager.startMonitoring(for: selectedCircularRegion)
+
         }
         
-         saveUserlocations(miles: totalDistance, latitude: startLocation.coordinate.latitude, longitude: startLocation.coordinate.longitude, selectedDataDic: selectedDataDic,pauseCount: pauseCount)
+        visitCoredataManager.saveUserlocations(miles: totalDistance, latitude: startLocation.coordinate.latitude, longitude: startLocation.coordinate.longitude, selectedDataDic: selectedDataDic,pauseCount: pauseCount,isCampaignRunning: true)
+        
+       
+        
+        
+        
         
     }
     
     @IBAction func stopButtonClicked(_ sender: Any) {
         
-        for region: CLRegion? in locationManager.monitoredRegions {
+      
+        stopMonitoringRegions()
+        
+      visitCoredataManager.saveUserlocations(miles: totalDistance, latitude: startLocation.coordinate.latitude, longitude: startLocation.coordinate.longitude, selectedDataDic: selectedDataDic,pauseCount: pauseCount,isCampaignRunning: false)
+        locationManager.stopUpdatingLocation()
+        locationManager.stopMonitoring(for: selectedCircularRegion)
+        
+        addMilesView()
+
+    }
+    
+    
+    func stopMonitoringRegions()
+    {
+        
+        if(locationManager != nil)
+        {
+        
+        for region: CLRegion? in self.locationManager.monitoredRegions {
             if let aRegion = region {
                 
                 locationManager.stopMonitoring(for: aRegion)
             }
         }
-
+            
+        }
+        
         isOutsideRegion = false
         isInsideRegion = false
+        
     }
     
     
@@ -267,7 +321,7 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                     
                     //let meterAcross = pmCircularRegion.radius * 2
                     
-                    let meterAcross = 1380
+                    let meterAcross = 1300
                     
                    // let meterAcross = self.selectedDataDic["limit"] as! String
                     
@@ -276,11 +330,21 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                     if CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
                         
                         self.riderMapView.delegate = self
-                        let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinates.latitude,
-                                                                                     longitude: coordinates.longitude), radius: CLLocationDistance(meterAcross), identifier: "pin")
                         
-                        region.notifyOnExit = true
-                        region.notifyOnEntry = true
+                        self.selectedCircularRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinates.latitude,
+                                                                                     longitude: coordinates.longitude), radius: CLLocationDistance(meterAcross), identifier: "pin")
+
+//
+                        //testing region
+                        
+//                        let location1: CLLocationCoordinate2D = CLLocationCoordinate2DMake(17.4840265, 78.3866567)
+//
+//
+//                        let region = CLCircularRegion(center: location1, radius: CLLocationDistance(meterAcross), identifier: "pin")
+//
+                        
+                        self.selectedCircularRegion.notifyOnExit = true
+                        self.selectedCircularRegion.notifyOnEntry = true
 
                         // 4. setup annotation
                         let restaurantAnnotation = MKPointAnnotation()
@@ -291,6 +355,10 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                         //draw a circle
                         
                         let location = CLLocation(latitude: coordinates.latitude as CLLocationDegrees, longitude: coordinates.longitude as CLLocationDegrees)
+                        
+                         // let location = CLLocation(latitude: location1.latitude as CLLocationDegrees, longitude: location1.longitude as CLLocationDegrees)
+
+                        
                         let circle = MKCircle.init(center: location.coordinate, radius: CLLocationDistance(meterAcross))
                         
                         self.riderMapView.add(circle)
@@ -299,10 +367,10 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                             
                              self.locationManager?.delegate = self
                              self.locationManager?.pausesLocationUpdatesAutomatically = true
-                            self.locationManager.requestAlwaysAuthorization()
+                             self.locationManager.requestAlwaysAuthorization()
                         }
                         
-                        self.locationManager.startMonitoring(for: region)
+                        self.locationManager.startMonitoring(for: self.selectedCircularRegion)
                          self.locationManager.startUpdatingLocation()
 
                         
@@ -375,7 +443,7 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             let circle = MKCircleRenderer(overlay: overlay)
             circle.strokeColor = UIColor.red
             circle.fillColor  = UIColor(red: 255.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.1)
-            circle.alpha = 0.1
+            circle.alpha = 0.5
             circle.lineWidth = 1
             return circle
         } else {
@@ -398,9 +466,11 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
         print("Started Monitoring Region: \(region.identifier)")
         
-
+        
+     isRegionMonitoringStarted = true
         //getLatLongFromZipCode(pincode: selectedDataDic["zipcode"] as! String)
 
+        
 
 
     }
@@ -413,24 +483,48 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
 
         sendNotification(message:"Entered Selected Region")
         updatePriceLabelsColor(miles: totalDistance)
+        
+        visitCoredataManager.saveUserlocations(miles: totalDistance, latitude: startLocation.coordinate.latitude, longitude: startLocation.coordinate.longitude, selectedDataDic: selectedDataDic,pauseCount: pauseCount,isCampaignRunning: true)
 
+
+        
+        let lists = visitCoredataManager.fetchSelectedCampaign("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext, campaignId:selectedDataDic["campaignId"] as! String)
+        
+        print("saved locations is \(lists)")
+        
+        
+        
         DispatchQueue.main.async {
-            //self.showAlert()
+          //  self.showAlert()
             self.boundaryView.isHidden    = true
             
         }
 
+    }
+    
+    func createPolyline() {
         
+
+        let point1 = CLLocationCoordinate2DMake(17.491983, 78.3892372);
+        let point2 = CLLocationCoordinate2DMake(17.4987411, 78.3818385);
+        let point3 = CLLocationCoordinate2DMake(17.4966542, 78.4133373);
         
-        if region is CLCircularRegion {
-            // Do what you want if this information
-            self.handleEvent(forRegion: region)
-        }
+        let points: [CLLocationCoordinate2D]
+        points = [point1, point2, point3]
         
+        let geodesic = MKGeodesicPolyline(coordinates: points, count: 5)
+        riderMapView.add(geodesic)
+        
+        UIView.animate(withDuration: 1.5, animations: { () -> Void in
+            let span = MKCoordinateSpanMake(0.01, 0.01)
+            let region1 = MKCoordinateRegion(center: point1, span: span)
+            self.riderMapView.setRegion(region1, animated: true)
+        })
     }
     
     // 2. user exit region
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        
         
         
         isOutsideRegion = true
@@ -440,9 +534,18 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
 
       updatePriceLabelsColor(miles: totalDistance)
         
+        //self.showAlert()
+
+        
         DispatchQueue.main.async {
-            //self.showAlert()
+
+
+            if(self.isRegionMonitoringStarted)
+            {
             self.addBoundaryView()
+                
+            }
+            
         }
 
 //        if region is CLCircularRegion {
@@ -472,18 +575,17 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             traveledDistance += distance
             
             print("traveledDistance in meters is \(traveledDistance)")
+            print("total distance in miles is \(totalDistance)")
 
             totalDistance = traveledDistance.inMiles()
             
             updatePriceLabelsColor(miles: totalDistance)
             
                 
-               // saveUserlocations(miles: traveledDistance, latitude: startLocation.coordinate.latitude, longitude: startLocation.coordinate.longitude, selectedDataDic: selectedDataDic)
           
             
         }
         
-        print("total distance in miles is \(totalDistance)")
         
         
         
@@ -514,83 +616,6 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
     }
     
-    func saveUserlocations(miles:Double,latitude:Double,longitude:Double,selectedDataDic:NSDictionary,pauseCount:Int)
-    {
-        
-        let managedObjectContext = visitCoredataManager.managedObjectContext
-        
-        // Create Entity Description
-        let entityDescription = NSEntityDescription.entity(forEntityName: "Map", in: managedObjectContext)
-        
-        if let entityDescription = entityDescription {
-            // Create Managed Object
-            let list = NSManagedObject(entity: entityDescription, insertInto: managedObjectContext)
-            
-            list.setValue(latitude, forKey: "latitude")
-            list.setValue(longitude, forKey: "longitude")
-            list.setValue(selectedDataDic["name"], forKey: "name")
-            list.setValue(miles, forKey: "miles")
-           // list.setValue(selectedDataDic["name"], forKey: "campaignid")
-            list.setValue(NSDate(), forKey: "timestamp")
-
-            print(list)
-            
-            do {
-                // Save Changes
-                try managedObjectContext.save()
-                
-            } catch {
-                // Error Handling
-            }
-        }
-        
-        
-        let managedObjectContext1 = self.visitCoredataManager.managedObjectContext
-        
-        let lists = self.fetchLocationRecordsForEntity("Map", inManagedObjectContext: managedObjectContext1)
-        
-        
-        
-        
-        
-    }
-    
-    
-    private func fetchLocationRecordsForEntity(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> [NSManagedObject] {
-        // Create Fetch Request
-        
-        
-        
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-        
-        //        let predicate = NSPredicate(format: "timestamp>= %@",reducedDate as NSDate)
-        //        fetchRequest.predicate = predicate
-        
-        
-        // Helpers
-        var result = [NSManagedObject]()
-        
-        do {
-            // Execute Fetch Request
-            let records = try managedObjectContext.fetch(fetchRequest)
-            
-            
-            if let records = records as? [NSManagedObject] {
-                result = records
-                
-            }
-            
-            for location in result {
-                print("fetched values is \(location.value(forKey: "name")!)"  )
-            }
-            
-        } catch {
-            print("Unable to fetch managed objects for entity \(entity).")
-        }
-        
-        return result
-    }
     
     
     
@@ -614,16 +639,61 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
     {
         
-        milesView.isHidden   = false
-        self.view .addSubview(milesView)
-        milesView.backgroundColor = UIColor.clear
-        milesView.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
-        circularView.layer.cornerRadius = circularView.frame.size.width/2
-        circularView.clipsToBounds = true
-        circularView.layer.borderColor = UIColor.white.cgColor
-        circularView.layer.backgroundColor = UIColor.red.cgColor
-        circularView.layer.borderWidth = 5.0
-        milesLabel.text = String(format:"%.2f miles", totalDistance)
+        
+        
+        let selectedCampaign  = visitCoredataManager.fetchAllCampaigns("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext)
+        
+        
+        if(selectedCampaign.count > 0)
+        {
+            let runningCampaign = selectedCampaign.last
+            
+            if(runningCampaign != nil)
+            {
+                milesLabel.text = String(format:"%.3f miles", runningCampaign?.value(forKey: "miles") as! Double)
+                circularPriceLabel.text = String(format:" $ %.3f", runningCampaign?.value(forKey: "miles") as! Double)
+                let formatter = DateFormatter()
+                formatter.dateFormat = "dd-MM-yyyy"
+                let myString = formatter.string(from: runningCampaign?.value(forKey: "timestamp") as! Date) // string purpose I add here
+                dateLabel.text = myString
+                
+                circularView.isHidden = false
+
+            }
+            else
+            
+            {
+                circularView.isHidden = true
+            }
+            
+            
+            milesView.isHidden   = false
+            self.view .addSubview(milesView)
+            milesView.backgroundColor = UIColor.clear
+            milesView.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
+            circularView.layer.cornerRadius = circularView.frame.size.width/2
+            circularView.clipsToBounds = true
+            circularView.layer.borderColor = UIColor.white.cgColor
+            circularView.layer.backgroundColor = UIColor.red.cgColor
+            circularView.layer.borderWidth = 5.0
+            
+          }
+        
+        else
+        
+        {
+            circularView.isHidden = true
+            milesView.isHidden   = false
+            self.view .addSubview(milesView)
+            milesView.backgroundColor = UIColor.clear
+            milesView.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
+            
+            
+        }
+        
+       
+
+        
         
         _ = buttonCornerRadius(selectedButton: rideButton, backGroundHexcolor: "#F14C1D", borderColor: "#FFFFFF", textColor: "#FFFFFF", borderWidth: 1, cornerRadius: 15, opacity: 1.0, isEnabled: true)
         
@@ -636,6 +706,15 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     
    
     
+    func getCurrentTimeStampWOMiliseconds(dateToConvert: NSDate) -> String {
+        let objDateformat: DateFormatter = DateFormatter()
+        objDateformat.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let strTime: String = objDateformat.string(from: dateToConvert as Date)
+        let objUTCDate: NSDate = objDateformat.date(from: strTime)! as NSDate
+        let milliseconds: Int64 = Int64(objUTCDate.timeIntervalSince1970)
+        let strTimeStamp: String = "\(milliseconds)"
+        return strTimeStamp
+    }
     
     func buttonCornerRadius( selectedButton : UIButton, backGroundHexcolor :String , borderColor : String, textColor : String, borderWidth :  CGFloat,  cornerRadius :  CGFloat , opacity : Float,
                              isEnabled: Bool) -> UIButton {
@@ -701,6 +780,11 @@ extension RideViewController : SlideMenuControllerDelegate {
     
     func leftWillOpen() {
         print("SlideMenuControllerDelegate: leftWillOpen")
+        if(self.locationManager.monitoredRegions.count > 0)
+        {
+            AlertMessage.disPlayAlertMessage(titleMessage: "Ridivert", alertMsg: "Please stop the running campaign")
+            
+        }
     }
     
     func leftDidOpen() {

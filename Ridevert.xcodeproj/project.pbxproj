@@ -40,6 +40,7 @@
 		CF29AFAB210CE9ED00716721 /* cycle.png in Resources */ = {isa = PBXBuildFile; fileRef = CF29AFAA210CE9ED00716721 /* cycle.png */; };
 		CF29AFAF210EE21000716721 /* RDSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF29AFAD210EE21000716721 /* RDSignInViewController.swift */; };
 		CF29AFB0210EE21000716721 /* RDAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF29AFAE210EE21000716721 /* RDAlertViewController.swift */; };
+		CF3ECEF62131E3BA00990BB3 /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3ECEF52131E3BA00990BB3 /* AlertMessage.swift */; };
 		CF480C2621203F7B002FE807 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF480C2521203F7B002FE807 /* CoreLocation.framework */; };
 		CF480C2821203F7F002FE807 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF480C2721203F7F002FE807 /* MapKit.framework */; };
 		CF7D4294211CC25D00362191 /* CustomFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF7D4292211CC25D00362191 /* CustomFooter.xib */; };
@@ -94,6 +95,7 @@
 		CF29AFAA210CE9ED00716721 /* cycle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cycle.png; sourceTree = "<group>"; };
 		CF29AFAD210EE21000716721 /* RDSignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDSignInViewController.swift; sourceTree = "<group>"; };
 		CF29AFAE210EE21000716721 /* RDAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDAlertViewController.swift; sourceTree = "<group>"; };
+		CF3ECEF52131E3BA00990BB3 /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
 		CF480C2521203F7B002FE807 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CF480C2721203F7F002FE807 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CF7D4292211CC25D00362191 /* CustomFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomFooter.xib; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 		CF91CC672106544900373FB6 = {
 			isa = PBXGroup;
 			children = (
+				CF3ECEF52131E3BA00990BB3 /* AlertMessage.swift */,
 				CF00333C212DEFA600D6887B /* Mapping.xcdatamodeld */,
 				CFBF773C212B453F0062FDBD /* CoreDataManager.swift */,
 				CF1921BE21248E080006A67B /* America.gpx */,
@@ -447,6 +450,7 @@
 				CF29AF8C210902EC00716721 /* ImageHeaderView.swift in Sources */,
 				CF00333E212DEFA600D6887B /* Mapping.xcdatamodeld in Sources */,
 				CF29AFA42109130D00716721 /* SettingsViewController.swift in Sources */,
+				CF3ECEF62131E3BA00990BB3 /* AlertMessage.swift in Sources */,
 				CF29AF9A2109128D00716721 /* CampaignViewController.swift in Sources */,
 				CF29AF76210901B700716721 /* LeftViewController.swift in Sources */,
 				CF29AFA0210912CE00716721 /* ReferralsViewController.swift in Sources */,

@@ -64,5 +64,101 @@ final class CoreDataManager {
         
         return persistentStoreCoordinator
     }()
+    
+    func saveUserlocations(miles:Double,latitude:Double,longitude:Double,selectedDataDic:NSDictionary,pauseCount:Int,isCampaignRunning:Bool)
+    {
+        
+        let managedObjectContext = self.managedObjectContext
+        
+        // Create Entity Description
+        let entityDescription = NSEntityDescription.entity(forEntityName: "Map", in: managedObjectContext)
+        
+        if let entityDescription = entityDescription {
+            // Create Managed Object
+            let list = NSManagedObject(entity: entityDescription, insertInto: managedObjectContext)
+            
+            list.setValue(latitude, forKey: "latitude")
+            list.setValue(longitude, forKey: "longitude")
+            list.setValue(selectedDataDic["name"], forKey: "name")
+            list.setValue(miles, forKey: "miles")
+            list.setValue(selectedDataDic["campaignId"], forKey: "campaignId")
+            list.setValue(NSDate(), forKey: "timestamp")
+            list.setValue(selectedDataDic["zipcode"], forKey: "zipcode")
+            list.setValue(pauseCount, forKey: "pauseCount")
+            list.setValue(isCampaignRunning, forKey: "isCampaignRunning")
+
+            print(list)
+            
+            do {
+                // Save Changes
+                try managedObjectContext.save()
+                
+            } catch {
+                // Error Handling
+            }
+        }
+        
+        
+      
+        
+    }
+    
+    
+     func fetchAllCampaigns(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> [NSManagedObject] {
+        // Create Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        var result = [NSManagedObject]()
+        
+        do {
+            // Execute Fetch Request
+            let records = try managedObjectContext.fetch(fetchRequest)
+            
+            
+            if let records = records as? [NSManagedObject] {
+                result = records
+                
+            }
+            
+            for location in result {
+                print("fetched values is \(location.value(forKey: "name")!)"  )
+            }
+            
+        } catch {
+            print("Unable to fetch managed objects for entity \(entity).")
+        }
+        
+        return result
+    }
+    
+    func fetchSelectedCampaign(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext,campaignId:String) -> [NSManagedObject] {
+        // Create Fetch Request
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        let predicate = NSPredicate(format: "campaignId = %@",campaignId)
+        fetchRequest.predicate = predicate
+        // Helpers
+        var result = [NSManagedObject]()
+        
+        do {
+            // Execute Fetch Request
+            let records = try managedObjectContext.fetch(fetchRequest)
+            
+            
+            if let records = records as? [NSManagedObject] {
+                result = records
+                
+            }
+            
+            for location in result {
+                print("fetched values is \(location.value(forKey: "name")!)"  )
+            }
+            
+        } catch {
+            print("Unable to fetch managed objects for entity \(entity).")
+        }
+        
+        return result
+    }
+    
 
 }

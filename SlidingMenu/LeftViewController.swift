@@ -48,7 +48,6 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let swiftViewController = storyboard.instantiateViewController(withIdentifier: "CampaignViewController") as! CampaignViewController
         self.campgainViewController = UINavigationController(rootViewController: swiftViewController)
-        
     
         let footerNib = UINib.init(nibName: "CustomFooter", bundle: Bundle.main)
         self.tableView.register(footerNib, forHeaderFooterViewReuseIdentifier: "CustomFooter")
