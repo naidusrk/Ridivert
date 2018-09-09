@@ -12,10 +12,8 @@ import CoreLocation
 import UserNotifications
 import CoreData
 
-class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,UIGestureRecognizerDelegate{
 
-    
-    
+class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,UIGestureRecognizerDelegate{
     let visitCoredataManager = CoreDataManager(modelName: "Mapping")
     var startLocation:CLLocation!
     var lastLocation: CLLocation!
@@ -124,10 +122,9 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.showBoundaryView(_:)))
         tap.delegate = self as! UIGestureRecognizerDelegate // This is not required
         riderMapView.addGestureRecognizer(tap)
-
         
+        NotificationCenter.default.addObserver(self, selector: #selector(cancelCampaignTapped(_:)), name:NSNotification.Name(rawValue: "CancelRideTapped"), object: nil)
 
-      
         // setupData()
         
         
@@ -135,6 +132,21 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         // Do any additional setup after loading the view.
     }
     
+    
+    
+    func campaignCancelled()
+    
+    {
+        stopMonitoringRegions()
+        
+    }
+
+    
+    @objc func cancelCampaignTapped(_ notification:Notification) {
+        // Do something now
+        stopMonitoringRegions()
+        
+    }
     @objc func showBoundaryView(_ sender: UITapGestureRecognizer) {
         
         print("Hello World")
@@ -274,10 +286,10 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
       
         stopMonitoringRegions()
         
-      visitCoredataManager.saveUserlocations(miles: totalDistance, latitude: startLocation.coordinate.latitude, longitude: startLocation.coordinate.longitude, selectedDataDic: selectedDataDic,pauseCount: pauseCount,isCampaignRunning: false)
+       visitCoredataManager.saveUserlocations(miles: totalDistance, latitude: startLocation.coordinate.latitude, longitude: startLocation.coordinate.longitude, selectedDataDic: selectedDataDic,pauseCount: pauseCount,isCampaignRunning: false)
         locationManager.stopUpdatingLocation()
         locationManager.stopMonitoring(for: selectedCircularRegion)
-        
+        self.boundaryView.isHidden = true
         addMilesView()
 
     }
@@ -289,7 +301,7 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         if(locationManager != nil)
         {
         
-        for region: CLRegion? in self.locationManager.monitoredRegions {
+           for region: CLRegion? in self.locationManager.monitoredRegions {
             if let aRegion = region {
                 
                 locationManager.stopMonitoring(for: aRegion)
@@ -345,6 +357,7 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
         geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
             if((error) != nil){
+                AlertMessage.disPlayAlertMessage(titleMessage: "Ridivert", alertMsg: (error?.localizedDescription)!)
                 print("Error", error)
             }
             if let placemark = placemarks?.first {
@@ -357,9 +370,9 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                     
                     //let meterAcross = pmCircularRegion.radius * 2
                     
-                    let meterAcross = 1300
+                  //  let meterAcross = 1300
                     
-                   // let meterAcross = self.selectedDataDic["limit"] as! String
+                     let meterAcross = self.selectedDataDic["limit"] as! String
                     
 
                     print("metersAcross is \(meterAcross)")
@@ -368,7 +381,7 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                         self.riderMapView.delegate = self
                         
                         self.selectedCircularRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinates.latitude,
-                                                                                     longitude: coordinates.longitude), radius: CLLocationDistance(meterAcross), identifier: "pin")
+                                                                                                      longitude: coordinates.longitude), radius: CLLocationDistance(meterAcross)!, identifier: "pin")
 
 //
                         //testing region
@@ -395,7 +408,7 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                          // let location = CLLocation(latitude: location1.latitude as CLLocationDegrees, longitude: location1.longitude as CLLocationDegrees)
 
                         
-                        let circle = MKCircle.init(center: location.coordinate, radius: CLLocationDistance(meterAcross))
+                        let circle = MKCircle.init(center: location.coordinate, radius: CLLocationDistance(meterAcross)!)
                         
                         self.riderMapView.add(circle)
                         
@@ -505,8 +518,8 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
      isRegionMonitoringStarted = true
         //getLatLongFromZipCode(pincode: selectedDataDic["zipcode"] as! String)
-
         
+       // visitCoredataManager.saveUserlocations(miles: 123.434, latitude: 1.2332432, longitude:1.345435, selectedDataDic: selectedDataDic,pauseCount: 2,isCampaignRunning: true)
 
 
     }
@@ -561,18 +574,12 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     // 2. user exit region
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         
-        
-        
         isOutsideRegion = true
         isInsideRegion = false
-
         sendNotification(message:"Exited Selected Region")
-
     //  updatePriceLabelsColor(miles: totalDistance)
-        
         //self.showAlert()
 
-        
         DispatchQueue.main.async {
 
 
@@ -598,10 +605,7 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
 
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        
        // manager.stopUpdatingLocation()
-
         if startLocation == nil {
             startLocation = locations.first
         } else {
@@ -609,24 +613,12 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             let distance = startLocation.distance(from: lastLocation!)
             startLocation = lastLocation
             traveledDistance += distance
-            
             print("traveledDistance in meters is \(traveledDistance)")
             print("total distance in miles is \(totalDistance)")
-
             totalDistance = traveledDistance.inMiles()
-            
             updatePriceLabelsColor(miles: totalDistance)
-            
-                
-          
-            
         }
-        
-        
-        
-        
-        
-        
+
 //       let userLocation:CLLocation = locations[0] as CLLocation
 //         // manager.stopUpdatingLocation()
 //
@@ -648,8 +640,7 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
 //            }
 //
 //        })
-        
-        
+
     }
     
     

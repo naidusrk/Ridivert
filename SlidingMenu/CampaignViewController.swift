@@ -17,21 +17,19 @@ class CampaignViewController: UIViewController {
     var selectedCampaign = NSDictionary ()
     let visitCoredataManager = CoreDataManager(modelName: "Mapping")
     var isCampaignRunning:Bool = false
+     let rideViewControllerRoot:RideViewController = RideViewController()
 
     var mainContens = ["data1", "data2", "data3", "data4", "data5", "data6", "data7", "data8", "data9", "data10", "data11", "data12", "data13", "data14", "data15"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         MBProgressHUD.showAdded(to: self.view, animated: true)
-
         loadData()
         self.navigationItem.title = "Campaigns"
         self.tableView.registerCellNib(DataTableViewCell.self)
         
         
-        checkifIsAnyCampaignSelected()
     }
     
     func loadData()
@@ -86,6 +84,7 @@ class CampaignViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
+        self.tableView.reloadData()
     }
     
     
@@ -211,8 +210,6 @@ extension CampaignViewController : UITableViewDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let rideViewControllerRoot:RideViewController = storyboard.instantiateViewController(withIdentifier: "RideViewController") as! RideViewController
         rideViewControllerRoot.selectedDataDic = selectedCampaign
-
-        
         let rideViewController = UINavigationController(rootViewController: rideViewControllerRoot)
         self.slideMenuController()?.changeMainViewController(rideViewController, close: true)
     }
@@ -227,28 +224,45 @@ extension CampaignViewController : UITableViewDataSource {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: DataTableViewCell.identifier) as! DataTableViewCell
         
         let dataDic = dataArray[indexPath.row] as! NSDictionary
-        
         cell.titleLable?.text = dataDic["name"] as? String
         cell.descriptionLabel?.text = dataDic["description"] as? String
         let priceStr = String(format: "%@%@", "$",(dataDic["limit"] as? String)!)
-        cell.selectCampaignBtn.addTarget(self, action: #selector(selectedCampaign(sender:)), for: .touchUpInside)
+        cell.selectCampaignBtn.addTarget(self, action: #selector(selectedCampaignTapped(sender:)), for: .touchUpInside)
+        cell.cancelCampaignBtn.addTarget(self, action: #selector(cancelCampaignTapped(sender:)), for: .touchUpInside)
+        cell.cancelCampaignBtn.tag = indexPath.row
         cell.selectCampaignBtn.tag = indexPath.row
         cell.priceLabel?.text = priceStr
         cell.selectCampaignBtn.layer.borderWidth = 1
         cell.selectCampaignBtn.layer.cornerRadius = 12
         cell.selectCampaignBtn.layer.opacity = 1
+        var isRunning:Bool = false
         
-        if isCampaignRunning {
-            cell.selectCampaignBtn.backgroundColor = UIColor.gray
-            
-        }
-        else
+        
+        let lists = visitCoredataManager.fetchSelectedCampaign("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext, campaignId:(dataDic["campaignId"] as? String)!)  
+        
+        print("lists isssss\(lists)")
+
+        let selectedId:String = checkCampaignSelected(selectedId: (dataDic["campaignId"] as? String)!)
+
+        if(selectedId == dataDic["campaignId"] as? String)
         {
-            cell.selectCampaignBtn.backgroundColor = UIColor(red: 249/255, green: 78/255, blue: 30/255, alpha: 1.0)
+            isRunning =  (lists[0].value(forKey: "isCampaignRunning")! as? Bool)!
             
+            if(isRunning)
+            {
+                cell.selectCampaignBtn.backgroundColor = UIColor.gray
+
+            }
+            else
+            {
+                cell.selectCampaignBtn.backgroundColor = UIColor(red: 249/255, green: 78/255, blue: 30/255, alpha: 1.0)
+
+            }
 
 
         }
+        
+        
         
         
        // let data = DataTableViewCellData(imageUrl: "dummy", text: mainContens[indexPath.row])
@@ -256,7 +270,7 @@ extension CampaignViewController : UITableViewDataSource {
         return cell
     }
     
-    @objc func selectedCampaign(sender: UIButton){
+    @objc func selectedCampaignTapped(sender: UIButton){
 
         if isCampaignRunning {
             AlertMessage.disPlayAlertMessage(titleMessage: "Ridivert", alertMsg: "Please stop the existing campaign to start the new one")
@@ -270,21 +284,29 @@ extension CampaignViewController : UITableViewDataSource {
        
     }
     
-    
-    func checkifIsAnyCampaignSelected()
-    {
+    @objc func cancelCampaignTapped(sender: UIButton){
         
-        let selectedCampaign  = visitCoredataManager.fetchAllCampaigns("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext)
-        
-        for location in selectedCampaign {
-            print("fetched values is \(location.value(forKey: "isCampaignRunning")!)"  )
-            isCampaignRunning =  location.value(forKey: "isCampaignRunning")! as! Bool
-            tableView.reloadData()
-        }
-        
-        
-        
+        let dataDic = dataArray[sender.tag] as! NSDictionary
+        let lists = visitCoredataManager.cancelSelectedCampaign("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext, campaignId:(dataDic["campaignId"] as? String)! )
+        rideViewControllerRoot.campaignCancelled()
+        NotificationCenter.default.post(name: Notification.Name("CancelRideTapped"), object: nil)
+        self.tableView.reloadData()
 
+    }
+    
+    
+    
+    func checkCampaignSelected(selectedId:String)->String
+    {
+        var campaignId:String = ""
+        let lists = visitCoredataManager.fetchSelectedCampaign("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext, campaignId:selectedId )
+        
+        for location in lists {
+            print("fetched values is \(location.value(forKey: "isCampaignRunning")!)"  )
+            campaignId =  location.value(forKey: "campaignId")! as! String
+            isCampaignRunning =  location.value(forKey: "isCampaignRunning")! as! Bool
+        }
+        return campaignId
     }
 
 }

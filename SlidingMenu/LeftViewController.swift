@@ -86,16 +86,19 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
             
        
         case .earnings:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let EarningsViewControllerRoot = storyboard.instantiateViewController(withIdentifier: "EarningsViewController") as! EarningsViewController
+            self.earningsViewController = UINavigationController(rootViewController: EarningsViewControllerRoot)
             self.slideMenuController()?.changeMainViewController(self.earningsViewController, close: true)
             
-        case .referrals:
-            self.slideMenuController()?.changeMainViewController(self.referralViewController, close: true)
+        case .referrals: break
+          //  self.slideMenuController()?.changeMainViewController(self.referralViewController, close: true)
             
-        case .help:
-            self.slideMenuController()?.changeMainViewController(self.helpViewController, close: true)
+        case .help: break
+          //  self.slideMenuController()?.changeMainViewController(self.helpViewController, close: true)
             
-        case .settings:
-            self.slideMenuController()?.changeMainViewController(self.settingsViewController, close: true)
+        case .settings: break
+           // self.slideMenuController()?.changeMainViewController(self.settingsViewController, close: true)
        
         }
     }

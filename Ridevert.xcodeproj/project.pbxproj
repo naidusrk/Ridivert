@@ -43,6 +43,7 @@
 		CF3ECEF62131E3BA00990BB3 /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3ECEF52131E3BA00990BB3 /* AlertMessage.swift */; };
 		CF480C2621203F7B002FE807 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF480C2521203F7B002FE807 /* CoreLocation.framework */; };
 		CF480C2821203F7F002FE807 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF480C2721203F7F002FE807 /* MapKit.framework */; };
+		CF76826C2145A86100910F59 /* EarningsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76826B2145A86100910F59 /* EarningsTableViewCell.swift */; };
 		CF7D4294211CC25D00362191 /* CustomFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF7D4292211CC25D00362191 /* CustomFooter.xib */; };
 		CF7D4295211CC25D00362191 /* CustomFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7D4293211CC25D00362191 /* CustomFooter.swift */; };
 		CF91CC742106544900373FB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF91CC732106544900373FB6 /* AppDelegate.swift */; };
@@ -98,6 +99,7 @@
 		CF3ECEF52131E3BA00990BB3 /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
 		CF480C2521203F7B002FE807 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CF480C2721203F7F002FE807 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CF76826B2145A86100910F59 /* EarningsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsTableViewCell.swift; sourceTree = "<group>"; };
 		CF7D4292211CC25D00362191 /* CustomFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomFooter.xib; sourceTree = "<group>"; };
 		CF7D4293211CC25D00362191 /* CustomFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFooter.swift; sourceTree = "<group>"; };
 		CF91CC702106544900373FB6 /* Ridevert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ridevert.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,6 +228,7 @@
 		CF91CC672106544900373FB6 = {
 			isa = PBXGroup;
 			children = (
+				CF76826B2145A86100910F59 /* EarningsTableViewCell.swift */,
 				CF3ECEF52131E3BA00990BB3 /* AlertMessage.swift */,
 				CF00333C212DEFA600D6887B /* Mapping.xcdatamodeld */,
 				CFBF773C212B453F0062FDBD /* CoreDataManager.swift */,
@@ -476,6 +479,7 @@
 				CF29AFB0210EE21000716721 /* RDAlertViewController.swift in Sources */,
 				CF91CC7C2106544900373FB6 /* Ridevert.xcdatamodeld in Sources */,
 				CF29AFAF210EE21000716721 /* RDSignInViewController.swift in Sources */,
+				CF76826C2145A86100910F59 /* EarningsTableViewCell.swift in Sources */,
 				CF29AF89210902EC00716721 /* UIImage.swift in Sources */,
 				CF29AF6321078E2900716721 /* RDConstants.swift in Sources */,
 				CF29AF6521078E8400716721 /* RDNetworkManager.swift in Sources */,
@@ -611,6 +615,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -634,7 +639,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.honeywell.ukappid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e5ec7e12-a952-424c-b150-7d4e944583b6";
+				PROVISIONING_PROFILE = "8bbc8385-7165-49de-9bdd-7c5169fa759a";
 				PROVISIONING_PROFILE_SPECIFIER = ukdevprofile;
 				SWIFT_OBJC_BRIDGING_HEADER = "Ridevert-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -650,7 +655,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 64PB4485ZJ;
 				INFOPLIST_FILE = Ridevert/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -659,7 +664,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.honeywell.ukappid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8bbc8385-7165-49de-9bdd-7c5169fa759a";
+				PROVISIONING_PROFILE_SPECIFIER = ukdevprofile;
 				SWIFT_OBJC_BRIDGING_HEADER = "Ridevert-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

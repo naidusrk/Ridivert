@@ -65,14 +65,11 @@ final class CoreDataManager {
         return persistentStoreCoordinator
     }()
     
-    func saveUserlocations(miles:Double,latitude:Double,longitude:Double,selectedDataDic:NSDictionary,pauseCount:Int,isCampaignRunning:Bool)
+     func saveUserlocations(miles:Double,latitude:Double,longitude:Double,selectedDataDic:NSDictionary,pauseCount:Int,isCampaignRunning:Bool)
     {
-        
-        let managedObjectContext = self.managedObjectContext
-        
+           let managedObjectContext = self.managedObjectContext
         // Create Entity Description
-        let entityDescription = NSEntityDescription.entity(forEntityName: "Map", in: managedObjectContext)
-        
+            let entityDescription = NSEntityDescription.entity(forEntityName: "Map", in: managedObjectContext)
         if let entityDescription = entityDescription {
             // Create Managed Object
             let list = NSManagedObject(entity: entityDescription, insertInto: managedObjectContext)
@@ -151,6 +148,42 @@ final class CoreDataManager {
             
             for location in result {
                 print("fetched values is \(location.value(forKey: "name")!)"  )
+            }
+            
+        } catch {
+            print("Unable to fetch managed objects for entity \(entity).")
+        }
+        
+        return result
+    }
+    
+    func cancelSelectedCampaign(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext,campaignId:String) -> [NSManagedObject] {
+        // Create Fetch Request
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        let predicate = NSPredicate(format: "campaignId = %@",campaignId)
+        fetchRequest.predicate = predicate
+        // Helpers
+        var result = [NSManagedObject]()
+        
+        do {
+            // Execute Fetch Request
+            let records = try managedObjectContext.fetch(fetchRequest)
+            if let records = records as? [NSManagedObject] {
+                result = records
+                
+            }
+            
+            for location in result {
+                location.setValue(false, forKey: "isCampaignRunning")
+                print("fetched values is \(location.value(forKey: "name")!)"  )
+                do {
+                    // Save Changes
+                    try managedObjectContext.save()
+                    
+                } catch {
+                    // Error Handling
+                }
             }
             
         } catch {

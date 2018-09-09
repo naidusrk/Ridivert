@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/CampaignViewController.swift"
-            timestampString = "557004828.430643"
+            timestampString = "558215230.127121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "loadData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,27 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/CampaignViewController.swift"
-            timestampString = "557004828.430706"
+            timestampString = "558215230.127223"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SlidingMenu/CampaignViewController.swift"
-            timestampString = "557004828.430753"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "loadData()"
             landmarkType = "7">
             <Locations>
@@ -122,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/CampaignViewController.swift"
-            timestampString = "557004828.4307981"
+            timestampString = "558215230.127265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "loadData()"
             landmarkType = "7">
             <Locations>
@@ -170,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/CampaignViewController.swift"
-            timestampString = "557004828.4308389"
+            timestampString = "558215230.127313"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -409,8 +393,8 @@
                   symbolName = "closure #1 (FacebookLogin.LoginResult) -&gt; () in Ridevert.RDSignInViewController.didTapFB(Any) -&gt; ()"
                   moduleName = "Ridevert"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/h148036/Documents/Ridevert/Ridevert/Login/RDSignInViewController.swift"
-                  timestampString = "556997710.918803"
+                  urlString = "file:///Users/h148036/Documents/Ridivert/Ridevert/Ridevert/Login/RDSignInViewController.swift"
+                  timestampString = "558215719.880724"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "310"
@@ -424,8 +408,8 @@
                   symbolName = "closure #1 (FacebookLogin.LoginResult) -&gt; () in Ridevert.RDSignInViewController.didTapFB(Any) -&gt; ()"
                   moduleName = "Ridevert"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/h148036/Documents/Ridevert/Ridevert/Login/RDSignInViewController.swift"
-                  timestampString = "556997710.9202811"
+                  urlString = "file:///Users/h148036/Documents/Ridivert/Ridevert/Ridevert/Login/RDSignInViewController.swift"
+                  timestampString = "558215719.882195"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "310"
@@ -473,8 +457,8 @@
                   symbolName = "Ridevert.RDSignInViewController.didTapFB(Any) -&gt; ()"
                   moduleName = "Ridevert"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/h148036/Documents/Ridevert/Ridevert/Login/RDSignInViewController.swift"
-                  timestampString = "556997710.927788"
+                  urlString = "file:///Users/h148036/Documents/Ridivert/Ridevert/Ridevert/Login/RDSignInViewController.swift"
+                  timestampString = "558215719.889388"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "308"
@@ -488,8 +472,8 @@
                   symbolName = "closure #1 (FacebookLogin.LoginResult) -&gt; () in Ridevert.RDSignInViewController.didTapFB(Any) -&gt; ()"
                   moduleName = "Ridevert"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/h148036/Documents/Ridevert/Ridevert/Login/RDSignInViewController.swift"
-                  timestampString = "556997710.929628"
+                  urlString = "file:///Users/h148036/Documents/Ridivert/Ridevert/Ridevert/Login/RDSignInViewController.swift"
+                  timestampString = "558215719.890924"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "309"
@@ -666,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/CampaignViewController.swift"
-            timestampString = "557004828.431326"
+            timestampString = "558215230.127578"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "loadData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -682,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/CampaignViewController.swift"
-            timestampString = "557004828.431371"
+            timestampString = "558215230.127618"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -698,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/CampaignViewController.swift"
-            timestampString = "557004828.431412"
+            timestampString = "558215230.127654"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "loadData()"
             landmarkType = "7">
             <Locations>
@@ -746,7 +730,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.150932"
+            timestampString = "558216343.607957"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "684"
@@ -762,7 +746,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151005"
+            timestampString = "558216343.608026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "687"
@@ -778,7 +762,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151054"
+            timestampString = "558216343.608073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
@@ -794,7 +778,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.1511"
+            timestampString = "558216343.608115"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "364"
@@ -810,7 +794,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151145"
+            timestampString = "558216343.6081541"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "444"
@@ -826,7 +810,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151191"
+            timestampString = "558216343.608194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "516"
@@ -842,7 +826,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151237"
+            timestampString = "558216343.608234"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "549"
@@ -858,7 +842,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151283"
+            timestampString = "558216343.608272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "582"
@@ -874,7 +858,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.15133"
+            timestampString = "558216343.608319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "612"
@@ -890,7 +874,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151377"
+            timestampString = "558216343.608357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "643"
@@ -906,7 +890,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151422"
+            timestampString = "558216343.608393"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "654"
@@ -922,7 +906,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151469"
+            timestampString = "558216343.60843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "658"
@@ -938,7 +922,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151515"
+            timestampString = "558216343.608466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "663"
@@ -954,7 +938,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151559"
+            timestampString = "558216343.608502"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "695"
@@ -970,7 +954,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151608"
+            timestampString = "558216343.608537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "707"
@@ -986,7 +970,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.15165"
+            timestampString = "558216343.608578"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "718"
@@ -1002,7 +986,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151692"
+            timestampString = "558216343.608631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "727"
@@ -1018,7 +1002,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151733"
+            timestampString = "558216343.608678"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "747"
@@ -1034,7 +1018,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151773"
+            timestampString = "558216343.608718"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "767"
@@ -1050,7 +1034,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151814"
+            timestampString = "558216343.608757"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "826"
@@ -1066,7 +1050,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151857"
+            timestampString = "558216343.608795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "833"
@@ -1082,7 +1066,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151897"
+            timestampString = "558216343.608833"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "840"
@@ -1098,7 +1082,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151938"
+            timestampString = "558216343.608871"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1055"
@@ -1114,7 +1098,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.151978"
+            timestampString = "558216343.6089081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1059"
@@ -1130,7 +1114,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.152019"
+            timestampString = "558216343.608946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1062"
@@ -1146,7 +1130,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.152058"
+            timestampString = "558216343.6089849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1067"
@@ -1162,7 +1146,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.1520979"
+            timestampString = "558216343.609024"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1069"
@@ -1178,7 +1162,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.152136"
+            timestampString = "558216343.609061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1073"
@@ -1194,7 +1178,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.1521749"
+            timestampString = "558216343.609099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "225"
@@ -1210,7 +1194,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/SlideMenuController.swift"
-            timestampString = "555534730.1522141"
+            timestampString = "558216343.609136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "222"
@@ -1242,11 +1226,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.432053"
+            timestampString = "558216343.6091959"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "407"
-            endingLineNumber = "407"
+            startingLineNumber = "420"
+            endingLineNumber = "420"
             landmarkName = "getLatLongFromZipCode(pincode:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1258,61 +1242,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.432511"
+            timestampString = "558216343.609252"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "560"
-            endingLineNumber = "560"
+            startingLineNumber = "573"
+            endingLineNumber = "573"
             landmarkName = "RideViewController"
             landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.432783"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "575"
-            endingLineNumber = "575"
-            landmarkName = "locationManager(_:didExitRegion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Ridevert.RideViewController.locationManager(__ObjC.CLLocationManager, didExitRegion: __ObjC.CLRegion) -&gt; ()"
-                  moduleName = "Ridevert"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/h148036/Documents/Ridevert/SlidingMenu/RideViewController.swift"
-                  timestampString = "556997710.9902461"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "540"
-                  endingLineNumber = "540"
-                  offsetFromSymbolStart = "248">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in Ridevert.RideViewController.locationManager(__ObjC.CLLocationManager, didExitRegion: __ObjC.CLRegion) -&gt; ()"
-                  moduleName = "Ridevert"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/h148036/Documents/Ridevert/SlidingMenu/RideViewController.swift"
-                  timestampString = "556997710.991765"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "543"
-                  endingLineNumber = "543"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1322,11 +1258,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.433042"
+            timestampString = "558216343.609296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1334,47 +1270,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.433308"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "563"
-            endingLineNumber = "563"
-            landmarkName = "locationManager(_:didExitRegion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.433563"
+            timestampString = "558216343.60934"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "644"
-            endingLineNumber = "644"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.433815"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "672"
-            endingLineNumber = "672"
+            startingLineNumber = "661"
+            endingLineNumber = "661"
             landmarkName = "RideViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1382,15 +1286,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/RideViewController.swift"
+            timestampString = "558216343.609382"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "688"
+            endingLineNumber = "688"
+            landmarkName = "addMilesView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.434073"
+            timestampString = "558216343.6094249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "514"
-            endingLineNumber = "514"
+            startingLineNumber = "527"
+            endingLineNumber = "527"
             landmarkName = "locationManager(_:didEnterRegion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1402,11 +1322,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.434369"
+            timestampString = "558216343.609468"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "535"
-            endingLineNumber = "535"
+            startingLineNumber = "548"
+            endingLineNumber = "548"
             landmarkName = "locationManager(_:didEnterRegion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1418,11 +1338,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.4346499"
+            timestampString = "558216343.609511"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "581"
-            endingLineNumber = "581"
+            startingLineNumber = "594"
+            endingLineNumber = "594"
             landmarkName = "locationManager(_:didExitRegion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1434,11 +1354,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/CampaignViewController.swift"
-            timestampString = "557004828.434942"
+            timestampString = "558215230.1284159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "rightWillClose()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1450,11 +1370,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/CampaignViewController.swift"
-            timestampString = "557004828.43499"
+            timestampString = "558215230.1284519"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
             landmarkName = "rightDidClose()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1466,7 +1386,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/LeftViewController.swift"
-            timestampString = "556923603.824438"
+            timestampString = "558216343.6095819"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
@@ -1482,11 +1402,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/LeftViewController.swift"
-            timestampString = "556923603.824475"
+            timestampString = "558216343.6096261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1498,76 +1418,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.435083"
+            timestampString = "558216343.609665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
             landmarkName = "setupData()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.4353679"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
-            landmarkName = "getLatLongFromZipCode(pincode:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Ridevert.RideViewController.getLatLongFromZipCode(pincode: Swift.String) -&gt; ()"
-                  moduleName = "Ridevert"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/h148036/Documents/Ridevert/SlidingMenu/RideViewController.swift"
-                  timestampString = "556739716.760429"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "186"
-                  endingLineNumber = "186"
-                  offsetFromSymbolStart = "96">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__ObjC.CLPlacemark&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Ridevert.RideViewController.getLatLongFromZipCode(pincode: Swift.String) -&gt; ()"
-                  moduleName = "Ridevert"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/h148036/Documents/Ridevert/SlidingMenu/RideViewController.swift"
-                  timestampString = "556739716.761966"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "187"
-                  endingLineNumber = "187"
-                  offsetFromSymbolStart = "36">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.435644"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "353"
-            endingLineNumber = "353"
-            landmarkName = "getLatLongFromZipCode(pincode:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1594,11 +1450,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.435946"
+            timestampString = "558216343.609723"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "520"
-            endingLineNumber = "520"
+            startingLineNumber = "533"
+            endingLineNumber = "533"
             landmarkName = "locationManager(_:didEnterRegion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1610,11 +1466,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.4362071"
+            timestampString = "558216343.609769"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
             landmarkName = "pauseButtonClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1626,11 +1482,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.43647"
+            timestampString = "558216343.6098109"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "addBoundaryView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1642,11 +1498,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.436729"
+            timestampString = "558216343.6098599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "updatePriceLabelsColor(miles:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1658,11 +1514,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.436981"
+            timestampString = "558216343.609899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "updatePriceLabelsColor(miles:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1674,11 +1530,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.437238"
+            timestampString = "558216343.609938"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "507"
-            endingLineNumber = "507"
+            startingLineNumber = "520"
+            endingLineNumber = "520"
             landmarkName = "locationManager(_:didStartMonitoringFor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1718,31 +1574,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.437539"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "524"
-            endingLineNumber = "524"
-            landmarkName = "locationManager(_:didEnterRegion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/CampaignViewController.swift"
-            timestampString = "557004828.437795"
+            timestampString = "558215230.1292861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "loadData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1754,11 +1594,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/CampaignViewController.swift"
-            timestampString = "557004828.437838"
+            timestampString = "558215230.129323"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "loadData()"
             landmarkType = "7">
             <Locations>
@@ -1802,11 +1642,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/CampaignViewController.swift"
-            timestampString = "557004828.437878"
+            timestampString = "558215230.1293581"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "loadData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1818,11 +1658,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.437917"
+            timestampString = "558216343.6100301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "pauseButtonClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1834,11 +1674,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.4381731"
+            timestampString = "558216343.610072"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "503"
-            endingLineNumber = "503"
+            startingLineNumber = "516"
+            endingLineNumber = "516"
             landmarkName = "locationManager(_:didStartMonitoringFor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1850,27 +1690,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.438427"
+            timestampString = "558216343.610112"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "510"
-            endingLineNumber = "510"
-            landmarkName = "locationManager(_:didStartMonitoringFor:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.4386801"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "544"
-            endingLineNumber = "544"
+            startingLineNumber = "557"
+            endingLineNumber = "557"
             landmarkName = "createPolyline()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1882,11 +1706,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.438933"
+            timestampString = "558216343.610152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "552"
-            endingLineNumber = "552"
+            startingLineNumber = "565"
+            endingLineNumber = "565"
             landmarkName = "createPolyline()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1897,44 +1721,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SlidingMenu/CampaignViewController.swift"
-            timestampString = "557004828.439184"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
-            landmarkName = "leftWillOpen()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SlidingMenu/CampaignViewController.swift"
-            timestampString = "557004828.4392281"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
-            landmarkName = "leftDidOpen()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.439268"
+            timestampString = "558216343.610191"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "680"
-            endingLineNumber = "680"
+            startingLineNumber = "696"
+            endingLineNumber = "696"
             landmarkName = "addMilesView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1946,11 +1738,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.439522"
+            timestampString = "558216343.61023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "730"
-            endingLineNumber = "730"
+            startingLineNumber = "746"
+            endingLineNumber = "746"
+            landmarkName = "buttonCornerRadius(selectedButton:backGroundHexcolor:borderColor:textColor:borderWidth:cornerRadius:opacity:isEnabled:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/RideViewController.swift"
+            timestampString = "558216343.610279"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "699"
+            endingLineNumber = "699"
             landmarkName = "addMilesView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1962,12 +1770,172 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/RideViewController.swift"
-            timestampString = "557004828.439784"
+            timestampString = "558216343.610327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "683"
-            endingLineNumber = "683"
-            landmarkName = "addMilesView()"
+            startingLineNumber = "358"
+            endingLineNumber = "358"
+            landmarkName = "getLatLongFromZipCode(pincode:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ridevert.RideViewController.getLatLongFromZipCode(pincode: Swift.String) -&gt; ()"
+                  moduleName = "Ridevert"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/h148036/Documents/Ridivert/Ridevert/SlidingMenu/RideViewController.swift"
+                  timestampString = "558215720.013683"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "358"
+                  endingLineNumber = "358"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__ObjC.CLPlacemark&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Ridevert.RideViewController.getLatLongFromZipCode(pincode: Swift.String) -&gt; ()"
+                  moduleName = "Ridevert"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/h148036/Documents/Ridivert/Ridevert/SlidingMenu/RideViewController.swift"
+                  timestampString = "558215720.015188"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "359"
+                  endingLineNumber = "359"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/RideViewController.swift"
+            timestampString = "558216343.610379"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "getLatLongFromZipCode(pincode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/RideViewController.swift"
+            timestampString = "558216343.610418"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
+            landmarkName = "getLatLongFromZipCode(pincode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/RideViewController.swift"
+            timestampString = "558216343.610456"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
+            landmarkName = "getLatLongFromZipCode(pincode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/RideViewController.swift"
+            timestampString = "558216343.610496"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "383"
+            endingLineNumber = "383"
+            landmarkName = "getLatLongFromZipCode(pincode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/RideViewController.swift"
+            timestampString = "558216343.610534"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
+            landmarkName = "getLatLongFromZipCode(pincode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/RideViewController.swift"
+            timestampString = "558216343.6105731"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
+            landmarkName = "getLatLongFromZipCode(pincode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/RideViewController.swift"
+            timestampString = "558216343.610611"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
+            landmarkName = "stopButtonClicked(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/RideViewController.swift"
+            timestampString = "558216343.6106499"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "stopButtonClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1978,12 +1946,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/CampaignViewController.swift"
-            timestampString = "557004828.440091"
+            timestampString = "558215230.130091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
-            landmarkName = "checkifIsAnyCampaignSelected()"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
+            landmarkName = "cancelCampaignTapped(sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoreDataManager.swift"
+            timestampString = "558216343.610706"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "cancelSelectedCampaign(_:inManagedObjectContext:campaignId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1994,12 +1978,252 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlidingMenu/CampaignViewController.swift"
-            timestampString = "557004828.440155"
+            timestampString = "558215230.130167"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
+            landmarkName = "cancelCampaignTapped(sender:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ridevert.CampaignViewController.cancelCampaignTapped(sender: __ObjC.UIButton) -&gt; ()"
+                  moduleName = "Ridevert"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/h148036/Documents/Ridivert/Ridevert/SlidingMenu/CampaignViewController.swift"
+                  timestampString = "558215720.051686"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "290"
+                  endingLineNumber = "290"
+                  offsetFromSymbolStart = "244">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ridevert.CampaignViewController.cancelCampaignTapped(sender: __ObjC.UIButton) -&gt; ()"
+                  moduleName = "Ridevert"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/h148036/Documents/Ridivert/Ridevert/SlidingMenu/CampaignViewController.swift"
+                  timestampString = "558215720.053129"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "290"
+                  endingLineNumber = "290"
+                  offsetFromSymbolStart = "1844">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/RideViewController.swift"
+            timestampString = "558216343.610759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "cancelCampaignTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/CampaignViewController.swift"
+            timestampString = "558215230.130245"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "cancelCampaignTapped(sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/RideViewController.swift"
+            timestampString = "558216343.610813"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
+            landmarkName = "stopButtonClicked(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/CampaignViewController.swift"
+            timestampString = "558215230.130322"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "cancelCampaignTapped(sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/RideViewController.swift"
+            timestampString = "558216343.610867"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "campaignCancelled()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/RideViewController.swift"
+            timestampString = "558216343.610908"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
+            landmarkName = "stopMonitoringRegions()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/RideViewController.swift"
+            timestampString = "558216343.610948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "375"
+            endingLineNumber = "375"
+            landmarkName = "getLatLongFromZipCode(pincode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/RideViewController.swift"
+            timestampString = "558216343.610986"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
+            landmarkName = "getLatLongFromZipCode(pincode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/RideViewController.swift"
+            timestampString = "558216343.611025"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
+            landmarkName = "getLatLongFromZipCode(pincode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/EarningsViewController.swift"
+            timestampString = "558217080.010159"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/EarningsViewController.swift"
+            timestampString = "558217080.010249"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/EarningsViewController.swift"
+            timestampString = "558217080.010293"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlidingMenu/EarningsViewController.swift"
+            timestampString = "558217080.010331"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
