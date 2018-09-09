@@ -12,12 +12,11 @@ import CoreLocation
 import UserNotifications
 import CoreData
 
-class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
+class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,UIGestureRecognizerDelegate{
 
     
     
     let visitCoredataManager = CoreDataManager(modelName: "Mapping")
-    
     var startLocation:CLLocation!
     var lastLocation: CLLocation!
     var traveledDistance:Double = 0
@@ -25,7 +24,7 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     var toggleState = 1
     var pauseCount:Int = 0
     var selectedCircularRegion = CLRegion()
-    
+    var isCampaignRunning:Bool = false
 
     var messageSubtitle = "Staff Meeting in 20 minutes"
     var isInsideRegion:Bool = false
@@ -63,8 +62,21 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
         
         self.slideMenuController()?.delegate = self as SlideMenuControllerDelegate
+        
+        
 
         stopMonitoringRegions()
+        
+        checkifIsAnyCampaignSelected()
+        
+        if isCampaignRunning {
+            rideButton.setTitle("Stop riding", for: .normal)
+        }
+        else
+        {
+            rideButton.setTitle("Start riding", for: .normal)
+            
+        }
 
         campaignPriceLabel.text = ""
         campaignPriceLabel.isHidden = true
@@ -109,6 +121,11 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         }
         
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.showBoundaryView(_:)))
+        tap.delegate = self as! UIGestureRecognizerDelegate // This is not required
+        riderMapView.addGestureRecognizer(tap)
+
+        
 
       
         // setupData()
@@ -118,9 +135,14 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         // Do any additional setup after loading the view.
     }
     
+    @objc func showBoundaryView(_ sender: UITapGestureRecognizer) {
+        
+        print("Hello World")
+        
+        updatePriceLabelsColor(miles: totalDistance)
+        
+    }
     
-    
-   
     
     
     func sendNotification(message:String) {
@@ -147,7 +169,20 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
         if(selectedDataDic.count > 0)
         {
-        getLatLongFromZipCode(pincode: selectedDataDic["zipcode"] as! String)
+            
+            if(rideButton.titleLabel?.text == "Stop riding")
+            {
+                stopButtonClicked(stopButton)
+                milesView.isHidden = true
+            }
+            
+            else
+            
+            {
+                getLatLongFromZipCode(pincode: selectedDataDic["zipcode"] as! String)
+
+            }
+            
         milesView.isHidden  = true
             
         }
@@ -258,11 +293,12 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             if let aRegion = region {
                 
                 locationManager.stopMonitoring(for: aRegion)
+                locationManager.stopUpdatingLocation()
+
             }
         }
             
         }
-        
         isOutsideRegion = false
         isInsideRegion = false
         
@@ -482,7 +518,7 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         isInsideRegion = true
 
         sendNotification(message:"Entered Selected Region")
-        updatePriceLabelsColor(miles: totalDistance)
+     //   updatePriceLabelsColor(miles: totalDistance)
         
         visitCoredataManager.saveUserlocations(miles: totalDistance, latitude: startLocation.coordinate.latitude, longitude: startLocation.coordinate.longitude, selectedDataDic: selectedDataDic,pauseCount: pauseCount,isCampaignRunning: true)
 
@@ -532,7 +568,7 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
 
         sendNotification(message:"Exited Selected Region")
 
-      updatePriceLabelsColor(miles: totalDistance)
+    //  updatePriceLabelsColor(miles: totalDistance)
         
         //self.showAlert()
 
@@ -731,6 +767,22 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         selectedButton.setTitleColor(UIColor.white, for: .normal)
         selectedButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         return selectedButton
+        
+        
+        
+    }
+    
+    
+    func checkifIsAnyCampaignSelected()
+    {
+        
+        let selectedCampaign  = visitCoredataManager.fetchAllCampaigns("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext)
+        
+        for location in selectedCampaign {
+            print("fetched values is \(location.value(forKey: "isCampaignRunning")!)"  )
+            isCampaignRunning =  location.value(forKey: "isCampaignRunning")! as! Bool
+        }
+        
         
         
         

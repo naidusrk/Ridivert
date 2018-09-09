@@ -15,7 +15,9 @@ class CampaignViewController: UIViewController {
     @IBOutlet  var tableView: UITableView!
     var dataArray  = NSMutableArray()
     var selectedCampaign = NSDictionary ()
-    
+    let visitCoredataManager = CoreDataManager(modelName: "Mapping")
+    var isCampaignRunning:Bool = false
+
     var mainContens = ["data1", "data2", "data3", "data4", "data5", "data6", "data7", "data8", "data9", "data10", "data11", "data12", "data13", "data14", "data15"]
     
     override func viewDidLoad() {
@@ -27,6 +29,9 @@ class CampaignViewController: UIViewController {
         loadData()
         self.navigationItem.title = "Campaigns"
         self.tableView.registerCellNib(DataTableViewCell.self)
+        
+        
+        checkifIsAnyCampaignSelected()
     }
     
     func loadData()
@@ -233,6 +238,18 @@ extension CampaignViewController : UITableViewDataSource {
         cell.selectCampaignBtn.layer.cornerRadius = 12
         cell.selectCampaignBtn.layer.opacity = 1
         
+        if isCampaignRunning {
+            cell.selectCampaignBtn.backgroundColor = UIColor.gray
+            
+        }
+        else
+        {
+            cell.selectCampaignBtn.backgroundColor = UIColor(red: 249/255, green: 78/255, blue: 30/255, alpha: 1.0)
+            
+
+
+        }
+        
         
        // let data = DataTableViewCellData(imageUrl: "dummy", text: mainContens[indexPath.row])
         //cell.setData(data)
@@ -241,12 +258,33 @@ extension CampaignViewController : UITableViewDataSource {
     
     @objc func selectedCampaign(sender: UIButton){
 
+        if isCampaignRunning {
+            AlertMessage.disPlayAlertMessage(titleMessage: "Ridivert", alertMsg: "Please stop the existing campaign to start the new one")
+            return
+        }
         
         selectedCampaign = dataArray[sender.tag] as! NSDictionary
         
         showAlert(string:(selectedCampaign["name"] as? String)!)
         
        
+    }
+    
+    
+    func checkifIsAnyCampaignSelected()
+    {
+        
+        let selectedCampaign  = visitCoredataManager.fetchAllCampaigns("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext)
+        
+        for location in selectedCampaign {
+            print("fetched values is \(location.value(forKey: "isCampaignRunning")!)"  )
+            isCampaignRunning =  location.value(forKey: "isCampaignRunning")! as! Bool
+            tableView.reloadData()
+        }
+        
+        
+        
+
     }
 
 }
