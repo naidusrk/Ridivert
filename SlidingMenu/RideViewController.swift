@@ -191,7 +191,8 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             else
             
             {
-                getLatLongFromZipCode(pincode: selectedDataDic["zipcode"] as! String)
+                drawGeofenceCircle()
+                //getLatLongFromZipCode(pincode: selectedDataDic["zipcode"] as! String)
 
             }
             
@@ -348,11 +349,70 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         }
     }
     
+    func drawGeofenceCircle()
+    {
+        
+        
+        let meterAcross = self.selectedDataDic["limit"] as! String
+
+        if CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
+            
+            self.riderMapView.delegate = self
+            let geofenceRegionCenter = CLLocationCoordinate2DMake(self.selectedDataDic["latitude"] as! Double, self.selectedDataDic["longitude"] as! Double);
+
+            
+            self.selectedCircularRegion = CLCircularRegion(center: geofenceRegionCenter, radius: CLLocationDistance(meterAcross)!, identifier: "pin")
+            
+            //
+            //testing region
+            
+            //                        let location1: CLLocationCoordinate2D = CLLocationCoordinate2DMake(17.4840265, 78.3866567)
+            //
+            //
+            //                        let region = CLCircularRegion(center: location1, radius: CLLocationDistance(meterAcross), identifier: "pin")
+            //
+            
+            self.selectedCircularRegion.notifyOnExit = true
+            self.selectedCircularRegion.notifyOnEntry = true
+            
+            // 4. setup annotation
+            let restaurantAnnotation = MKPointAnnotation()
+            restaurantAnnotation.coordinate = geofenceRegionCenter;
+            restaurantAnnotation.title = self.selectedDataDic["limit"] as? String ;
+            self.riderMapView.addAnnotation(restaurantAnnotation)
+            
+            //draw a circle
+            let location = CLLocation(latitude: geofenceRegionCenter.latitude as CLLocationDegrees, longitude: geofenceRegionCenter.longitude as CLLocationDegrees)
+            
+            // let location = CLLocation(latitude: location1.latitude as CLLocationDegrees, longitude: location1.longitude as CLLocationDegrees)
+            let circle = MKCircle.init(center: location.coordinate, radius: CLLocationDistance(meterAcross)!)
+            
+            self.riderMapView.add(circle)
+            
+            if CLLocationManager.locationServicesEnabled() {
+                
+                self.locationManager?.delegate = self
+                self.locationManager?.pausesLocationUpdatesAutomatically = true
+                self.locationManager.requestAlwaysAuthorization()
+            }
+            self.locationManager.startMonitoring(for: self.selectedCircularRegion)
+            self.locationManager.startUpdatingLocation()
+            let viewRegion = MKCoordinateRegionMakeWithDistance(geofenceRegionCenter, 50, 50)
+            self.riderMapView.setRegion(viewRegion, animated: true)
+
+            
+            
+        }
+        else {
+            print("System can't track regions")
+        }
+        
+    }
     
     func getLatLongFromZipCode(pincode:String)
     {
         
-        let address = pincode
+        let address = "99546"
         let geocoder = CLGeocoder()
         
         geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
@@ -380,7 +440,7 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                         
                         self.riderMapView.delegate = self
                         
-                        self.selectedCircularRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinates.latitude,
+        self.selectedCircularRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinates.latitude,
                                                                                                       longitude: coordinates.longitude), radius: CLLocationDistance(meterAcross)!, identifier: "pin")
 
 //
@@ -516,10 +576,17 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         print("Started Monitoring Region: \(region.identifier)")
         
         
-     isRegionMonitoringStarted = true
-        //getLatLongFromZipCode(pincode: selectedDataDic["zipcode"] as! String)
+          isRegionMonitoringStarted = true
         
-       // visitCoredataManager.saveUserlocations(miles: 123.434, latitude: 1.2332432, longitude:1.345435, selectedDataDic: selectedDataDic,pauseCount: 2,isCampaignRunning: true)
+        
+        if(self.selectedDataDic.count > 0)
+        {
+              visitCoredataManager.saveUserlocations(miles:0, latitude: (self.selectedDataDic["latitude"] as? Double)!, longitude:(self.selectedDataDic["longitude"] as? Double)!, selectedDataDic: self.selectedDataDic,pauseCount: 0,isCampaignRunning: true)
+
+        }
+        
+        
+        
 
 
     }
@@ -535,8 +602,6 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
         visitCoredataManager.saveUserlocations(miles: totalDistance, latitude: startLocation.coordinate.latitude, longitude: startLocation.coordinate.longitude, selectedDataDic: selectedDataDic,pauseCount: pauseCount,isCampaignRunning: true)
 
-
-        
         let lists = visitCoredataManager.fetchSelectedCampaign("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext, campaignId:selectedDataDic["campaignId"] as! String)
         
         print("saved locations is \(lists)")

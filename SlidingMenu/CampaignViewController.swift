@@ -37,15 +37,11 @@ class CampaignViewController: UIViewController {
     {
         
         
-        let url = URL(string: "https://project1-cbb37.firebaseio.com/campaign.json?auth=N4ON5oaqd5PFw5sx5JZUMwa1oqh5MJ0eiOa49bsZ")
+        let url = URL(string: "https://ridevert-978bc.firebaseio.com/campaign.json")
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             guard let data = data, error == nil else { return }
             
             do {
-                
-                
-                
-
                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
               //  let dic = json as! [String:Any]
                 for item in json
