@@ -17,6 +17,7 @@ class CampaignViewController: UIViewController {
     var selectedCampaign = NSDictionary ()
     let visitCoredataManager = CoreDataManager(modelName: "Mapping")
     var isCampaignRunning:Bool = false
+    var selectedCampaignId :String = ""
      let rideViewControllerRoot:RideViewController = RideViewController()
 
     var mainContens = ["data1", "data2", "data3", "data4", "data5", "data6", "data7", "data8", "data9", "data10", "data11", "data12", "data13", "data14", "data15"]
@@ -25,10 +26,13 @@ class CampaignViewController: UIViewController {
         super.viewDidLoad()
 
         MBProgressHUD.showAdded(to: self.view, animated: true)
+        checkCampaignSelected()
         loadData()
+        
         self.navigationItem.title = "Campaigns"
         self.tableView.registerCellNib(DataTableViewCell.self)
-        
+        self.tableView.tableFooterView = UIView()
+
         
     }
     
@@ -51,6 +55,7 @@ class CampaignViewController: UIViewController {
                     
                     objectData["campaignId"] = item.key
                     self.dataArray.add(objectData)
+                    
 
                    
                 }
@@ -80,6 +85,12 @@ class CampaignViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
+        
+        let lists  = visitCoredataManager.fetchAllCampaigns("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext)
+
+        print(lists)
+         checkCampaignSelected()
+
         self.tableView.reloadData()
     }
     
@@ -231,20 +242,17 @@ extension CampaignViewController : UITableViewDataSource {
         cell.selectCampaignBtn.layer.borderWidth = 1
         cell.selectCampaignBtn.layer.cornerRadius = 12
         cell.selectCampaignBtn.layer.opacity = 1
-        var isRunning:Bool = false
+     //   var isRunning:Bool = false
         
         
-        let lists = visitCoredataManager.fetchSelectedCampaign("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext, campaignId:(dataDic["campaignId"] as? String)!)  
-        
-        print("lists isssss\(lists)")
+        let lists = visitCoredataManager.fetchSelectedCampaign("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext, campaignId:(dataDic["campaignId"] as? String)!)
 
-        let selectedId:String = checkCampaignSelected(selectedId: (dataDic["campaignId"] as? String)!)
+//        print("lists isssss\(lists)")
 
-        if(selectedId == dataDic["campaignId"] as? String)
-        {
-            isRunning =  (lists[0].value(forKey: "isCampaignRunning")! as? Bool)!
-            
-            if(isRunning)
+        
+        
+        
+            if((dataDic["campaignId"] as? String)! == selectedCampaignId && isCampaignRunning)
             {
                 cell.selectCampaignBtn.backgroundColor = UIColor.gray
 
@@ -256,8 +264,6 @@ extension CampaignViewController : UITableViewDataSource {
             }
 
 
-        }
-        
         
         
         
@@ -272,7 +278,7 @@ extension CampaignViewController : UITableViewDataSource {
             AlertMessage.disPlayAlertMessage(titleMessage: "Ridivert", alertMsg: "Please stop the existing campaign to start the new one")
             return
         }
-        
+//
         selectedCampaign = dataArray[sender.tag] as! NSDictionary
         
         showAlert(string:(selectedCampaign["name"] as? String)!)
@@ -286,23 +292,32 @@ extension CampaignViewController : UITableViewDataSource {
         let lists = visitCoredataManager.cancelSelectedCampaign("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext, campaignId:(dataDic["campaignId"] as? String)! )
         rideViewControllerRoot.campaignCancelled()
         NotificationCenter.default.post(name: Notification.Name("CancelRideTapped"), object: nil)
+        isCampaignRunning = false
+        checkCampaignSelected()
+
         self.tableView.reloadData()
 
     }
     
     
     
-    func checkCampaignSelected(selectedId:String)->String
+    func checkCampaignSelected()
     {
-        var campaignId:String = ""
-        let lists = visitCoredataManager.fetchSelectedCampaign("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext, campaignId:selectedId )
+        var isCampaignRunning1:Bool = false
         
+        let lists  = visitCoredataManager.fetchAllCampaigns("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext)
+
         for location in lists {
             print("fetched values is \(location.value(forKey: "isCampaignRunning")!)"  )
-            campaignId =  location.value(forKey: "campaignId")! as! String
-            isCampaignRunning =  location.value(forKey: "isCampaignRunning")! as! Bool
+            isCampaignRunning1 =  location.value(forKey: "isCampaignRunning")! as! Bool
+            if(isCampaignRunning1)
+            {
+                 selectedCampaignId =  location.value(forKey: "campaignId")! as! String
+                 isCampaignRunning = true
+                
+                return
+            }
         }
-        return campaignId
     }
 
 }

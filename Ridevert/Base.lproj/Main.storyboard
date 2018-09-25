@@ -50,6 +50,20 @@
                                     <outlet property="delegate" destination="qz0-vT-jRI" id="2EJ-1S-ZXz"/>
                                 </connections>
                             </mapView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPW-Uv-2CL">
+                                <rect key="frame" x="111" y="600" width="153" height="47"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.29803921570000003" blue="0.1137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="93f-p8-HLx"/>
+                                    <constraint firstAttribute="width" constant="153" id="jty-nU-DbO"/>
+                                </constraints>
+                                <state key="normal" title="Stop Campaign">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="stoponGoingCampagin:" destination="qz0-vT-jRI" eventType="touchUpInside" id="AZu-5V-aDg"/>
+                                </connections>
+                            </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$43.10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1t-U0-Hch">
                                 <rect key="frame" x="275" y="462" width="80" height="48"/>
                                 <color key="backgroundColor" red="0.90980392156862744" green="0.63137254901960782" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -149,9 +163,11 @@
                             <constraint firstItem="L7Z-gY-lO3" firstAttribute="trailing" secondItem="w9J-2W-Nrk" secondAttribute="trailing" id="TdS-vz-fnN"/>
                             <constraint firstItem="w9J-2W-Nrk" firstAttribute="trailing" secondItem="z1t-U0-Hch" secondAttribute="trailing" constant="20" id="U8r-ok-z3K"/>
                             <constraint firstItem="tNW-xS-GeL" firstAttribute="leading" secondItem="w9J-2W-Nrk" secondAttribute="leading" id="ecl-zM-QiP"/>
+                            <constraint firstItem="LPW-Uv-2CL" firstAttribute="centerX" secondItem="nJD-cE-bPz" secondAttribute="centerX" id="kHZ-Nn-Hrm"/>
                             <constraint firstAttribute="bottom" secondItem="L7Z-gY-lO3" secondAttribute="bottom" id="ouN-he-zag"/>
                             <constraint firstItem="tNW-xS-GeL" firstAttribute="top" secondItem="w9J-2W-Nrk" secondAttribute="top" id="r3x-96-wRr"/>
                             <constraint firstItem="w9J-2W-Nrk" firstAttribute="trailing" secondItem="tNW-xS-GeL" secondAttribute="trailing" id="rMe-Qh-OrU"/>
+                            <constraint firstItem="w9J-2W-Nrk" firstAttribute="bottom" secondItem="LPW-Uv-2CL" secondAttribute="bottom" constant="20" id="vRv-xs-wPa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="w9J-2W-Nrk"/>
                     </view>
@@ -169,6 +185,7 @@
                         <outlet property="rideButton" destination="wMH-3x-It7" id="id6-3Y-knT"/>
                         <outlet property="riderMapView" destination="tNW-xS-GeL" id="QYa-9c-1ea"/>
                         <outlet property="stopButton" destination="9Tt-ht-OE1" id="Tqm-O2-mW2"/>
+                        <outlet property="stopOnGoingBtn" destination="LPW-Uv-2CL" id="A0o-51-1gW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BnJ-eO-5Iq" userLabel="First Responder" sceneMemberID="firstResponder"/>

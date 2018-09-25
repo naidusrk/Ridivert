@@ -24,9 +24,10 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     var selectedCircularRegion = CLRegion()
     var isCampaignRunning:Bool = false
 
+    @IBOutlet weak var stopOnGoingBtn: UIButton!
+    
     var messageSubtitle = "Staff Meeting in 20 minutes"
     var isInsideRegion:Bool = false
-    var isOutsideRegion:Bool = false
     var isRegionMonitoringStarted:Bool = false
 
     var dollarPrice :Float = 0.0
@@ -57,34 +58,23 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         self.slideMenuController()?.delegate = self as SlideMenuControllerDelegate
         
-        
-
         stopMonitoringRegions()
-        
-        checkifIsAnyCampaignSelected()
-        
-        if isCampaignRunning {
-            rideButton.setTitle("Stop riding", for: .normal)
-        }
-        else
-        {
-            rideButton.setTitle("Start riding", for: .normal)
-            
-        }
-
         campaignPriceLabel.text = ""
         campaignPriceLabel.isHidden = true
+        checkifIsAnyCampaignSelected()
+        
+       
+
+        
         UNUserNotificationCenter.current().requestAuthorization(options:
             [[.alert, .sound, .badge]],
                                                                 completionHandler: { (granted, error) in
                                                                     // Handle Error
         })
     
-        addMilesView()
         self.setNavigationBarItem()
         riderMapView.delegate = self
         locationManager = CLLocationManager()
@@ -98,7 +88,6 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         riderMapView.isZoomEnabled = true
         riderMapView.isScrollEnabled = true
         riderMapView.showsUserLocation  = true
-        
         self.locationManager.requestAlwaysAuthorization()
 
         if let coor = riderMapView.userLocation.location?.coordinate{
@@ -120,14 +109,25 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.showBoundaryView(_:)))
-        tap.delegate = self as! UIGestureRecognizerDelegate // This is not required
-        riderMapView.addGestureRecognizer(tap)
+        tap.delegate = self as UIGestureRecognizerDelegate // This is not required
+        tap.numberOfTapsRequired = 2
+         self.riderMapView.addGestureRecognizer(tap)
         
         NotificationCenter.default.addObserver(self, selector: #selector(cancelCampaignTapped(_:)), name:NSNotification.Name(rawValue: "CancelRideTapped"), object: nil)
 
         // setupData()
         
         
+        if isCampaignRunning {
+            // stopOnGoingBtn.isHidden = false
+            
+        }
+        else
+            
+        {
+            addMilesView()
+            //stopOnGoingBtn.isHidden = true
+        }
       
         // Do any additional setup after loading the view.
     }
@@ -150,7 +150,7 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     @objc func showBoundaryView(_ sender: UITapGestureRecognizer) {
         
         print("Hello World")
-        
+        addBoundaryView()
         updatePriceLabelsColor(miles: totalDistance)
         
     }
@@ -179,27 +179,15 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     
     @IBAction func rideButtonClicked(_ sender: Any) {
         
-        if(selectedDataDic.count > 0)
-        {
-            
-            if(rideButton.titleLabel?.text == "Stop riding")
-            {
-                stopButtonClicked(stopButton)
-                milesView.isHidden = true
-            }
-            
-            else
-            
-            {
+
+        
                 drawGeofenceCircle()
                 //getLatLongFromZipCode(pincode: selectedDataDic["zipcode"] as! String)
-
-            }
-            
-        milesView.isHidden  = true
-            
-        }
+        
+            milesView.isHidden  = true
     }
+    
+    
     
     
     
@@ -210,8 +198,26 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         boundaryView.isHidden = false
         milesLabel.text = String(format:"%.2f miles", totalDistance)
         
+        if(selectedCampaignId.count > 0)
+        {
+            let lists = visitCoredataManager.fetchSelectedCampaign("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext, campaignId:selectedCampaignId)
+            
+            for location in lists {
+                
+                updatePriceLabelsColor(miles: location.value(forKey: "miles")! as! Double)
 
+            }
+
+
+        }
+        else
         
+        {
+            
+            updatePriceLabelsColor(miles: totalDistance)
+        }
+
+
     }
     
     
@@ -232,21 +238,21 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
            boundaryMilesLabel.text = String(format:"%.3f miles", totalDistance)
 
         }
-            
-            
-        if (isOutsideRegion)
         
+        else
         {
             campaignPriceLabel.isHidden = false
-
+            
             regionBackGroundColor = UIColor.red
             campaignPriceLabel.backgroundColor = UIColor.red
             let distance:String = String(format:"$ %.3f", miles)
             campaignPriceLabel.text = distance
             boundaryMilesLabel.text = String(format:"%.3f miles", totalDistance)
-
             
         }
+            
+            
+        
         
         
     }
@@ -273,7 +279,7 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
 
         }
         
-        visitCoredataManager.saveUserlocations(miles: totalDistance, latitude: startLocation.coordinate.latitude, longitude: startLocation.coordinate.longitude, selectedDataDic: selectedDataDic,pauseCount: pauseCount,isCampaignRunning: true)
+        visitCoredataManager.updateSelectedCampaign(miles: totalDistance, latitude: startLocation.coordinate.latitude, longitude: startLocation.coordinate.longitude, selectedDataDic: selectedDataDic,pauseCount: pauseCount,isCampaignRunning: true,campaignId:selectedDataDic["campaignId"] as! String)
         
        
         
@@ -283,43 +289,76 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     }
     
     @IBAction func stopButtonClicked(_ sender: Any) {
+
+//
+        if selectedDataDic.count>0 {
+            
+           stopMonitoringRegions()
+
+            let lists = visitCoredataManager.cancelSelectedCampaign("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext, campaignId: selectedCampaignId )
+            
+            visitCoredataManager.updateSelectedCampaign(miles: totalDistance, latitude: startLocation.coordinate.latitude, longitude: startLocation.coordinate.longitude, selectedDataDic: selectedDataDic,pauseCount: pauseCount,isCampaignRunning: false,campaignId:selectedDataDic["campaignId"] as! String)
+
+            
+            
+            addMilesView()
+
+        }
         
-      
-        stopMonitoringRegions()
-        
-       visitCoredataManager.saveUserlocations(miles: totalDistance, latitude: startLocation.coordinate.latitude, longitude: startLocation.coordinate.longitude, selectedDataDic: selectedDataDic,pauseCount: pauseCount,isCampaignRunning: false)
-        locationManager.stopUpdatingLocation()
-        locationManager.stopMonitoring(for: selectedCircularRegion)
-        self.boundaryView.isHidden = true
-        addMilesView()
+        if(selectedCampaignId.count > 0)
+        {
+            stopMonitoringRegions()
+            
+            let lists = visitCoredataManager.cancelSelectedCampaign("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext, campaignId: selectedCampaignId )
+            addMilesView()
+        }
 
     }
     
+    
+    @IBAction func stoponGoingCampagin(_ sender: Any) {
+        
+        if selectedCampaignId.count>0 {
+
+            
+            for view in self.view.subviews {
+                print("inbuildivews is \(view)")
+            }
+ 
+            stopOnGoingBtn.isHidden = true
+           isRegionMonitoringStarted = false
+            
+            visitCoredataManager.updateSelectedCampaign(miles: totalDistance, latitude: startLocation.coordinate.latitude, longitude: startLocation.coordinate.longitude, selectedDataDic: selectedDataDic,pauseCount: pauseCount,isCampaignRunning: false,campaignId:selectedDataDic["campaignId"] as! String)
+            
+            
+            locationManager.stopUpdatingLocation()
+            addMilesView()
+
+        }
+        
+        
+    }
     
     func stopMonitoringRegions()
     {
-        
+
         if(locationManager != nil)
         {
-        
-           for region: CLRegion? in self.locationManager.monitoredRegions {
-            if let aRegion = region {
-                
-                locationManager.stopMonitoring(for: aRegion)
-                locationManager.stopUpdatingLocation()
+            locationManager.stopMonitoring(for: self.selectedCircularRegion)
 
-            }
+//           for region: CLRegion? in self.locationManager.monitoredRegions {
+//            if let aRegion = region {
+//                locationManager.stopMonitoring(for: aRegion)
+//                locationManager.stopUpdatingLocation()
+//            }
         }
-            
-        }
-        isOutsideRegion = false
-        isInsideRegion = false
+            isInsideRegion = false
         
+        
+
     }
     
-    
-    
-    
+
     func setupData() {
         // 1. check if system can monitor regions
         if CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
@@ -352,16 +391,35 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     func drawGeofenceCircle()
     {
         
-        
-        let meterAcross = self.selectedDataDic["limit"] as! String
+        if(selectedDataDic.count > 0)
+        {
+            
+            
+            let tempString = (self.selectedDataDic["limit"] as! NSString).doubleValue
+
+            let radius = 1609.34 * tempString
+          let meterAcross = radius
+        //let meterAcross:String = "200"
 
         if CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
             
             self.riderMapView.delegate = self
-            let geofenceRegionCenter = CLLocationCoordinate2DMake(self.selectedDataDic["latitude"] as! Double, self.selectedDataDic["longitude"] as! Double);
+            
+            var lat:Double = 0.0
+            var long:Double = 0.0
+
+            if let val = self.selectedDataDic["latitude"] as? NSNumber {
+                lat = val.doubleValue
+            }
+            if let val = self.selectedDataDic["longitude"] as? NSNumber {
+                long = val.doubleValue
+            }
+            let geofenceRegionCenter = CLLocationCoordinate2DMake(lat, long);
+
+           // let geofenceRegionCenter = CLLocationCoordinate2DMake(Double(self.selectedDataDic["latitude"] )!, Double(self.selectedDataDic["longitude"])!);
 
             
-            self.selectedCircularRegion = CLCircularRegion(center: geofenceRegionCenter, radius: CLLocationDistance(meterAcross)!, identifier: "pin")
+            self.selectedCircularRegion = CLCircularRegion(center: geofenceRegionCenter, radius: CLLocationDistance(meterAcross), identifier: "pin")
             
             //
             //testing region
@@ -378,14 +436,14 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             // 4. setup annotation
             let restaurantAnnotation = MKPointAnnotation()
             restaurantAnnotation.coordinate = geofenceRegionCenter;
-            restaurantAnnotation.title = self.selectedDataDic["limit"] as? String ;
+            restaurantAnnotation.title = self.selectedDataDic["name"] as? String ;
             self.riderMapView.addAnnotation(restaurantAnnotation)
             
             //draw a circle
             let location = CLLocation(latitude: geofenceRegionCenter.latitude as CLLocationDegrees, longitude: geofenceRegionCenter.longitude as CLLocationDegrees)
             
             // let location = CLLocation(latitude: location1.latitude as CLLocationDegrees, longitude: location1.longitude as CLLocationDegrees)
-            let circle = MKCircle.init(center: location.coordinate, radius: CLLocationDistance(meterAcross)!)
+            let circle = MKCircle.init(center: location.coordinate, radius: CLLocationDistance(meterAcross))
             
             self.riderMapView.add(circle)
             
@@ -395,16 +453,24 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                 self.locationManager?.pausesLocationUpdatesAutomatically = true
                 self.locationManager.requestAlwaysAuthorization()
             }
+            else
+            
+            {
+             AlertMessage.disPlayAlertMessage(titleMessage: "Ridivert", alertMsg: "Please enable the location access in the settings")
+            }
             self.locationManager.startMonitoring(for: self.selectedCircularRegion)
             self.locationManager.startUpdatingLocation()
             let viewRegion = MKCoordinateRegionMakeWithDistance(geofenceRegionCenter, 50, 50)
             self.riderMapView.setRegion(viewRegion, animated: true)
+            self.riderMapView.showsUserLocation = true
 
             
             
         }
         else {
             print("System can't track regions")
+        }
+            
         }
         
     }
@@ -568,39 +634,116 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
         
         print("----->entered regions")
-
+        if state == CLRegionState.inside{
+            if region is CLCircularRegion {
+                isInsideRegion = true
+            }
+        }
 
     }
     
     func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
         print("Started Monitoring Region: \(region.identifier)")
-        
-        
+
           isRegionMonitoringStarted = true
-        
-        
+
         if(self.selectedDataDic.count > 0)
         {
-              visitCoredataManager.saveUserlocations(miles:0, latitude: (self.selectedDataDic["latitude"] as? Double)!, longitude:(self.selectedDataDic["longitude"] as? Double)!, selectedDataDic: self.selectedDataDic,pauseCount: 0,isCampaignRunning: true)
+            
+            let lists = visitCoredataManager.fetchSelectedCampaign("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext, campaignId:(selectedDataDic["campaignId"] as? String)!)
+            
+            
+            if(lists.count > 0)
+            {
+                
+                if(startLocation != nil)
+                {
+                visitCoredataManager.updateSelectedCampaign(miles: totalDistance, latitude: startLocation.coordinate.latitude, longitude: startLocation.coordinate.longitude, selectedDataDic: selectedDataDic,pauseCount: pauseCount,isCampaignRunning: true,campaignId:selectedDataDic["campaignId"] as! String)
+                }
+
+            }
+            else
+            
+            {
+                
+                    var lat:Double = 0.0
+                    var long:Double = 0.0
+                    
+                    if let val = self.selectedDataDic["latitude"] as? NSNumber {
+                        lat = val.doubleValue
+                    }
+                    if let val = self.selectedDataDic["longitude"] as? NSNumber {
+                        long = val.doubleValue
+                    }
+                
+                visitCoredataManager.saveUserlocations(miles:0, latitude: lat, longitude:long, selectedDataDic: self.selectedDataDic,pauseCount: 0,isCampaignRunning: true,campaignId:selectedDataDic["campaignId"] as! String)
+               
+                
+                
+            }
+
+            
+            
+            let selectedCampaign  = visitCoredataManager.fetchAllCampaigns("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext)
+
+            
 
         }
         
         
+         // isInsideRegion = true
+          addBoundaryView()
         
-
 
     }
     
+    
+//    func userInsidePolygon(userlocation: CLLocationCoordinate2D ) -> Bool {
+//        var containsPoint: Bool = false
+//        // get every overlay on the map
+//        let o = self.riderMapView.overlays
+//        // loop every overlay on map
+//        for overlay in o {
+//            // handle only polygon
+//            if overlay is MKCircle{
+//                let polygon:MKCircle =  overlay as! MKCircle
+//                let polygonPath:CGMutablePath  = CGMutablePath()
+//                // get points of polygon
+//                let arrPoints = polygon.points()
+//                // create cgpath
+//                for i in 0..<polygon.pointCount {
+//
+//                    let polygonMapPoint: MKMapPoint = arrPoints[i]
+//                    let polygonCoordinate = MKCoordinateForMapPoint(polygonMapPoint)
+//                    let polygonPoint = self.riderMapView.convert(polygonCoordinate, toPointTo: self.riderMapView)
+//
+//                    if (i == 0){
+//                        polygonPath.move(to: CGPoint(x: polygonPoint.x, y: polygonPoint.y))
+//                    }
+//                    else{
+//                        polygonPath.addLine(to: CGPoint(x: polygonPoint.x, y: polygonPoint.y))
+//                    }
+//                }
+//                let mapPointAsCGP:CGPoint = self.riderMapView.convert(userlocation, toPointTo: self.riderMapView)
+//                containsPoint =  polygonPath.contains(mapPointAsCGP)
+//                if containsPoint {
+//                    return true
+//                }
+//            }
+//        }
+//        return containsPoint
+//    }
+//
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         
         
-        isOutsideRegion = false
         isInsideRegion = true
-
+        
+        
         sendNotification(message:"Entered Selected Region")
      //   updatePriceLabelsColor(miles: totalDistance)
         
-        visitCoredataManager.saveUserlocations(miles: totalDistance, latitude: startLocation.coordinate.latitude, longitude: startLocation.coordinate.longitude, selectedDataDic: selectedDataDic,pauseCount: pauseCount,isCampaignRunning: true)
+        visitCoredataManager.updateSelectedCampaign(miles: totalDistance, latitude: startLocation.coordinate.latitude, longitude: startLocation.coordinate.longitude, selectedDataDic: selectedDataDic,pauseCount: pauseCount,isCampaignRunning: true,campaignId:selectedDataDic["campaignId"] as! String)
 
         let lists = visitCoredataManager.fetchSelectedCampaign("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext, campaignId:selectedDataDic["campaignId"] as! String)
         
@@ -639,7 +782,6 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     // 2. user exit region
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         
-        isOutsideRegion = true
         isInsideRegion = false
         sendNotification(message:"Exited Selected Region")
     //  updatePriceLabelsColor(miles: totalDistance)
@@ -648,8 +790,8 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         DispatchQueue.main.async {
 
 
-            if(self.isRegionMonitoringStarted)
-            {
+        if(self.isRegionMonitoringStarted)
+           {
             self.addBoundaryView()
                 
             }
@@ -730,12 +872,8 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     func addMilesView()
         
     {
-        
-        
-        
         let selectedCampaign  = visitCoredataManager.fetchAllCampaigns("Map", inManagedObjectContext: visitCoredataManager.managedObjectContext)
-        
-        
+
         if(selectedCampaign.count > 0)
         {
             let runningCampaign = selectedCampaign.last
@@ -837,6 +975,11 @@ class RideViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
         for location in selectedCampaign {
             print("fetched values is \(location.value(forKey: "isCampaignRunning")!)"  )
             isCampaignRunning =  location.value(forKey: "isCampaignRunning")! as! Bool
+            if(isCampaignRunning)
+            {
+            selectedCampaignId = location.value(forKey: "campaignId")! as! String
+                
+            }
         }
         
         
@@ -888,11 +1031,16 @@ extension RideViewController : SlideMenuControllerDelegate {
     
     func leftWillOpen() {
         print("SlideMenuControllerDelegate: leftWillOpen")
-        if(self.locationManager.monitoredRegions.count > 0)
-        {
+        
+        if isRegionMonitoringStarted {
             AlertMessage.disPlayAlertMessage(titleMessage: "Ridivert", alertMsg: "Please stop the running campaign")
-            
+
         }
+//        if(self.locationManager.monitoredRegions.count > 0)
+//        {
+//            AlertMessage.disPlayAlertMessage(titleMessage: "Ridivert", alertMsg: "Please stop the running campaign")
+//
+//        }
     }
     
     func leftDidOpen() {

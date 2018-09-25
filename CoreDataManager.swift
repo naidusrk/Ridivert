@@ -65,7 +65,7 @@ final class CoreDataManager {
         return persistentStoreCoordinator
     }()
     
-     func saveUserlocations(miles:Double,latitude:Double,longitude:Double,selectedDataDic:NSDictionary,pauseCount:Int,isCampaignRunning:Bool)
+     func saveUserlocations(miles:Double,latitude:Double,longitude:Double,selectedDataDic:NSDictionary,pauseCount:Int,isCampaignRunning:Bool,campaignId:String)
     {
            let managedObjectContext = self.managedObjectContext
         // Create Entity Description
@@ -73,7 +73,7 @@ final class CoreDataManager {
         if let entityDescription = entityDescription {
             // Create Managed Object
             let list = NSManagedObject(entity: entityDescription, insertInto: managedObjectContext)
-            
+
             list.setValue(latitude, forKey: "latitude")
             list.setValue(longitude, forKey: "longitude")
             list.setValue(selectedDataDic["name"], forKey: "name")
@@ -85,20 +85,70 @@ final class CoreDataManager {
             list.setValue(isCampaignRunning, forKey: "isCampaignRunning")
 
             print(list)
-            
+
             do {
                 // Save Changes
                 try managedObjectContext.save()
-                
+
             } catch {
                 // Error Handling
             }
+            
+
         }
-        
-        
-      
+
+       // return result
         
     }
+    
+    
+    
+     func updateSelectedCampaign(miles:Double,latitude:Double,longitude:Double,selectedDataDic:NSDictionary,pauseCount:Int,isCampaignRunning:Bool,campaignId:String)
+    {
+    
+     
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Map")
+        let predicate = NSPredicate(format: "campaignId = %@",campaignId)
+        fetchRequest.predicate = predicate
+        // Helpers
+        var result = [NSManagedObject]()
+        
+        do {
+            // Execute Fetch Request
+            let records = try managedObjectContext.fetch(fetchRequest)
+            if let records = records as? [NSManagedObject] {
+                result = records
+                
+            }
+            
+            for location in result {
+                location.setValue(latitude, forKey: "latitude")
+                location.setValue(longitude, forKey: "longitude")
+                location.setValue(selectedDataDic["name"], forKey: "name")
+                location.setValue(miles, forKey: "miles")
+                location.setValue(selectedDataDic["campaignId"], forKey: "campaignId")
+                location.setValue(NSDate(), forKey: "timestamp")
+                location.setValue(selectedDataDic["zipcode"], forKey: "zipcode")
+                location.setValue(pauseCount, forKey: "pauseCount")
+                location.setValue(isCampaignRunning, forKey: "isCampaignRunning")
+                
+                print("fetched values is \(location.value(forKey: "name")!)"  )
+                do {
+                    // Save Changes
+                    try managedObjectContext.save()
+                    
+                } catch {
+                    // Error Handling
+                }
+            }
+            
+        }
+        catch {
+            //  print("Unable to fetch managed objects for entity \(entity).")
+        }
+        
+    }
+    
     
     
      func fetchAllCampaigns(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> [NSManagedObject] {
@@ -129,7 +179,6 @@ final class CoreDataManager {
     
     func fetchSelectedCampaign(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext,campaignId:String) -> [NSManagedObject] {
         // Create Fetch Request
-        
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
         let predicate = NSPredicate(format: "campaignId = %@",campaignId)
         fetchRequest.predicate = predicate
@@ -139,13 +188,9 @@ final class CoreDataManager {
         do {
             // Execute Fetch Request
             let records = try managedObjectContext.fetch(fetchRequest)
-            
-            
             if let records = records as? [NSManagedObject] {
                 result = records
-                
             }
-            
             for location in result {
                 print("fetched values is \(location.value(forKey: "name")!)"  )
             }
@@ -153,7 +198,7 @@ final class CoreDataManager {
         } catch {
             print("Unable to fetch managed objects for entity \(entity).")
         }
-        
+
         return result
     }
     

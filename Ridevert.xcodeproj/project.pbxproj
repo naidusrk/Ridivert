@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CF00333E212DEFA600D6887B /* Mapping.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF00333C212DEFA600D6887B /* Mapping.xcdatamodeld */; };
-		CF1921BF21248E090006A67B /* America.gpx in Resources */ = {isa = PBXBuildFile; fileRef = CF1921BE21248E080006A67B /* America.gpx */; };
+		CF1921BF21248E090006A67B /* testtube.gpx in Resources */ = {isa = PBXBuildFile; fileRef = CF1921BE21248E080006A67B /* testtube.gpx */; };
 		CF29AF6321078E2900716721 /* RDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF29AF6221078E2900716721 /* RDConstants.swift */; };
 		CF29AF6521078E8400716721 /* RDNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF29AF6421078E8400716721 /* RDNetworkManager.swift */; };
 		CF29AF6821078F9800716721 /* RDTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF29AF6721078F9800716721 /* RDTextFieldValidation.swift */; };
@@ -52,6 +52,7 @@
 		CF91CC7C2106544900373FB6 /* Ridevert.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF91CC7A2106544900373FB6 /* Ridevert.xcdatamodeld */; };
 		CF91CC7E2106545000373FB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF91CC7D2106545000373FB6 /* Assets.xcassets */; };
 		CF91CC812106545000373FB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF91CC7F2106545000373FB6 /* LaunchScreen.storyboard */; };
+		CFBBFF452157CE92004553FC /* shanthi clinic.gpx in Resources */ = {isa = PBXBuildFile; fileRef = CFBBFF442157CE92004553FC /* shanthi clinic.gpx */; };
 		CFBF773D212B453F0062FDBD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF773C212B453F0062FDBD /* CoreDataManager.swift */; };
 		DD9A85BAF190074A1417BE50 /* Pods_Ridevert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F55ACA87BB98FFFA25BFD36 /* Pods_Ridevert.framework */; };
 /* End PBXBuildFile section */
@@ -61,7 +62,7 @@
 		230B3D3A98E182CF93657CE1 /* Pods-Ridevert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ridevert.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ridevert/Pods-Ridevert.release.xcconfig"; sourceTree = "<group>"; };
 		91D56C2B7769CB92E26FD3E8 /* Pods-Ridevert.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ridevert.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ridevert/Pods-Ridevert.debug.xcconfig"; sourceTree = "<group>"; };
 		CF00333D212DEFA600D6887B /* Map.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Map.xcdatamodel; sourceTree = "<group>"; };
-		CF1921BE21248E080006A67B /* America.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = America.gpx; sourceTree = "<group>"; };
+		CF1921BE21248E080006A67B /* testtube.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testtube.gpx; sourceTree = "<group>"; };
 		CF29AF6221078E2900716721 /* RDConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDConstants.swift; sourceTree = "<group>"; };
 		CF29AF6421078E8400716721 /* RDNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDNetworkManager.swift; sourceTree = "<group>"; };
 		CF29AF6721078F9800716721 /* RDTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDTextFieldValidation.swift; sourceTree = "<group>"; };
@@ -110,6 +111,9 @@
 		CF91CC7D2106545000373FB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF91CC802106545000373FB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF91CC822106545000373FB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFBBFF4221579636004553FC /* olive.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = olive.gpx; sourceTree = "<group>"; };
+		CFBBFF432157968D004553FC /* pluscars.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = pluscars.gpx; sourceTree = "<group>"; };
+		CFBBFF442157CE92004553FC /* shanthi clinic.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "shanthi clinic.gpx"; sourceTree = "<group>"; };
 		CFBF773C212B453F0062FDBD /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,7 +236,10 @@
 				CF3ECEF52131E3BA00990BB3 /* AlertMessage.swift */,
 				CF00333C212DEFA600D6887B /* Mapping.xcdatamodeld */,
 				CFBF773C212B453F0062FDBD /* CoreDataManager.swift */,
-				CF1921BE21248E080006A67B /* America.gpx */,
+				CF1921BE21248E080006A67B /* testtube.gpx */,
+				CFBBFF4221579636004553FC /* olive.gpx */,
+				CFBBFF432157968D004553FC /* pluscars.gpx */,
+				CFBBFF442157CE92004553FC /* shanthi clinic.gpx */,
 				CF29AF95210905DF00716721 /* SlidingMenu */,
 				CF29AF8E2109031E00716721 /* Tableviewcell */,
 				CF29AF78210902D600716721 /* Extension */,
@@ -347,7 +354,8 @@
 				CF91CC812106545000373FB6 /* LaunchScreen.storyboard in Resources */,
 				CF91CC7E2106545000373FB6 /* Assets.xcassets in Resources */,
 				CF7D4294211CC25D00362191 /* CustomFooter.xib in Resources */,
-				CF1921BF21248E090006A67B /* America.gpx in Resources */,
+				CF1921BF21248E090006A67B /* testtube.gpx in Resources */,
+				CFBBFF452157CE92004553FC /* shanthi clinic.gpx in Resources */,
 				CF91CC792106544900373FB6 /* Main.storyboard in Resources */,
 				CF29AF87210902EC00716721 /* ImageHeaderView.xib in Resources */,
 			);
